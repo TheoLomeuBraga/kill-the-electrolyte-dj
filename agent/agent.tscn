@@ -1,16 +1,19 @@
-[gd_scene load_steps=76 format=4 uid="uid://b1rjrotvghaeo"]
+[gd_scene load_steps=77 format=4 uid="uid://b1rjrotvghaeo"]
 
 [ext_resource type="Script" path="res://agent/agent.gd" id="1_1mbpp"]
 [ext_resource type="Texture2D" uid="uid://bkgykkvui8ynr" path="res://agent/agent_Untitled.png" id="2_j0pda"]
+
+[sub_resource type="Curve" id="Curve_ldn57"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_swrrr"]
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tljmw"]
-size = Vector3(0.9, 1, 0.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r86ap"]
-size = Vector3(0.9, 1, 0.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmyi5"]
 resource_name = "Material"
@@ -7771,6 +7774,7 @@ _data = {
 
 [node name="Agent" type="CharacterBody3D"]
 script = ExtResource("1_1mbpp")
+jump_curve = SubResource("Curve_ldn57")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_swrrr")
@@ -7779,12 +7783,14 @@ shape = SubResource("BoxShape3D_swrrr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.592795, 0)
 
 [node name="ShapeCastFloor" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258563, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.680008, 0)
 shape = SubResource("BoxShape3D_tljmw")
+target_position = Vector3(0, 0, 0)
 
 [node name="ShapeCastCealing" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58982, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625741, 0)
 shape = SubResource("BoxShape3D_r86ap")
+target_position = Vector3(0, 0, 0)
 
 [node name="model" type="Node3D" parent="."]
 
@@ -8253,10 +8259,16 @@ libraries = {
 "": SubResource("AnimationLibrary_awb0x")
 }
 
-[node name="camera_basis" type="Node3D" parent="."]
+[node name="camera_basis" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="SpringArm3D" type="SpringArm3D" parent="camera_basis"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="camera_basis_3D" type="Node3D" parent="camera_basis"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="camera_basis/camera_basis_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 spring_length = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="camera_basis/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="camera_basis/camera_basis_3D/SpringArm3D"]
