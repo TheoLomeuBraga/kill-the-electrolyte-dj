@@ -2,6 +2,17 @@ extends CharacterBody3D
 
 @onready var particle_muzle : GPUParticles3D = $model/particle_muzle
 
+func set_glow(color:Color) -> void:
+	$model/agent/Object/Skeleton3D/head_2_001/head_2_001.mesh.surface_get_material(0).emission = color
+	$model/agent/Object/Skeleton3D/Cube_051/Cube_051.mesh.surface_get_material(0).emission = color
+	$model/agent/Object/Skeleton3D/Cube_052/Cube_052.mesh.surface_get_material(0).emission = color
+
+func get_glow() -> Color:
+	return $model/agent/Object/Skeleton3D/head_2_001/head_2_001.mesh.surface_get_material(0).emission
+
+func hit(damage : int):
+	set_glow(Color.RED)
+	$sfx/hit.play()
 
 func _ready() -> void:
 	$camera_basis/camera_basis_3D.global_position = global_position
@@ -220,8 +231,13 @@ func _process(delta: float) -> void:
 func is_player():
 	pass
 
+
+func fade_glow(delta: float):
+	set_glow(lerp(get_glow(),Color.BLACK,delta*4))
+
 func _physics_process(delta: float) -> void:
 	
+	fade_glow(delta)
 	
 	if state == 0:
 		floor_state(delta)

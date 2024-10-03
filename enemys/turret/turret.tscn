@@ -1,6 +1,9 @@
-[gd_scene load_steps=26 format=4 uid="uid://cde4631xn1r6y"]
+[gd_scene load_steps=24 format=4 uid="uid://cde4631xn1r6y"]
 
 [ext_resource type="Script" path="res://enemys/turret/turret.gd" id="1_y0mtf"]
+[ext_resource type="PackedScene" uid="uid://dsq0cf7g5dkc5" path="res://enemys/turret/bullet/bullet.tscn" id="2_m3h3c"]
+[ext_resource type="AudioStream" uid="uid://c3nw0c8372ef3" path="res://sfx/metal_crash.wav" id="3_rihh2"]
+[ext_resource type="AudioStream" uid="uid://bqwqo24saujdp" path="res://sfx/shot.wav" id="3_vjfmq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjuia"]
 resource_local_to_scene = true
@@ -206,32 +209,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wp3hn")
 
-[sub_resource type="Curve" id="Curve_w2h3d"]
-max_value = 0.5
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.5), 0.0, 0.0, 0, 0, Vector2(0.384058, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 5
-
-[sub_resource type="CurveTexture" id="CurveTexture_v5pd8"]
-curve = SubResource("Curve_w2h3d")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5gkgu"]
-direction = Vector3(0, -1, 0)
-spread = 10.0
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_v5pd8")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63kod"]
-albedo_color = Color(1, 1, 0, 1)
-emission_enabled = true
-emission = Color(1, 1, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_vxiqx"]
-material = SubResource("StandardMaterial3D_63kod")
-radial_segments = 4
-rings = 1
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_5mk50"]
 size = Vector3(1, 2.07312, 1)
 
@@ -263,6 +240,7 @@ rings = 1
 
 [node name="Turret" type="Node3D"]
 script = ExtResource("1_y0mtf")
+bullet = ExtResource("2_m3h3c")
 
 [node name="turret" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -295,14 +273,8 @@ transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wkyhx")
 skeleton = NodePath("")
 
-[node name="muzle" type="GPUParticles3D" parent="turret/Cylinder_002/Cylinder_001/Cube/Cube_001"]
+[node name="muzle" type="Node3D" parent="turret/Cylinder_002/Cylinder_001/Cube/Cube_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.90234, -0.141553)
-emitting = false
-amount = 16
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_5gkgu")
-draw_pass_1 = SubResource("SphereMesh_vxiqx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -311,11 +283,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817231, 0)
 shape = SubResource("BoxShape3D_5mk50")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 emitting = false
 amount = 32
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_vllu4")
 draw_pass_1 = SubResource("SphereMesh_s4hpk")
+
+[node name="sfx" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="hit" type="AudioStreamPlayer3D" parent="sfx"]
+stream = ExtResource("3_rihh2")
+
+[node name="shot" type="AudioStreamPlayer3D" parent="sfx"]
+stream = ExtResource("3_vjfmq")
+pitch_scale = 0.5
 
 [connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]

@@ -19,6 +19,7 @@ var state := 0
 func hit(damage: int):
 	set_glow(Color.WHITE)
 	health -= damage
+	$sfx/hit.play()
 
 func idle_state(delta: float) -> void:
 	
@@ -29,13 +30,30 @@ func idle_state(delta: float) -> void:
 
 @onready var muzle := $turret/Cylinder_002/Cylinder_001/Cube/Cube_001/muzle
 
+var coldown := 0.0
+@export var bullet : PackedScene
+@export var range_distance : float = 10.0
+func shot():
+	var b : GPUParticles3D = bullet.instantiate()
+	get_tree().get_root().add_child(b)
+	b.global_transform = muzle.global_transform
+	b.emitting = true
+	$sfx/shot.play()
+
 func aim_state(delta: float) -> void:
 	if (direction_x > 0 and Global.player.global_position.x - global_position.x > 0 ) or (direction_x < 0 and Global.player.global_position.x - global_position.x < 0 ):
 		if Global.player != null:
 			var pp : Vector3 = Global.player.global_position
 			pp.z = 0
+			pp.y += 0.5
 			$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.look_at(pp,-Vector3.UP)
 			$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.rotation_degrees.x -= 90
+			
+			
+			
+			if global_position.distance_to(Global.player.global_position) < range_distance and coldown <= 0:
+				shot()
+				coldown = 0.5
 	else:
 		state = 0
 
@@ -71,4 +89,5 @@ func _process(delta: float) -> void:
 	elif state == 2:
 		death_state(delta)
 	
+	coldown -= delta
 	

@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsq0cf7g5dkc5"]
+
+[ext_resource type="Script" path="res://enemys/turret/bullet/bullet.gd" id="1_ta70d"]
+
+[sub_resource type="Curve" id="Curve_00bs3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57971, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ixbk6"]
+curve = SubResource("Curve_00bs3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dc2ov"]
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ixbk6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5ffl"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ckd5"]
+material = SubResource("StandardMaterial3D_p5ffl")
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5ai3"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1c77m"]
+material = SubResource("StandardMaterial3D_b5ai3")
+radius = 0.4
+height = 0.8
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_avsqx"]
+radius = 0.25
+
+[node name="Bullet" type="GPUParticles3D"]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_dc2ov")
+draw_pass_1 = SubResource("SphereMesh_2ckd5")
+script = ExtResource("1_ta70d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1c77m")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="MeshInstance3D"]
+shape = SubResource("SphereShape3D_avsqx")
+target_position = Vector3(0, 0, 0)
