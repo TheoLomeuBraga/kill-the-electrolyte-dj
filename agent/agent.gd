@@ -21,7 +21,6 @@ var air_progresion : float = 0.5
 
 
 
-
 var air_direction := Vector3.ZERO
 
 var target_rot_y := 90.0
@@ -30,6 +29,17 @@ var freze_target_rot_y := 0.0
 @export var bullet :PackedScene
 
 var cooldown :float = 0.0
+
+var ui_buttons : Dictionary = {
+	"left": false,
+	"right": false,
+	"jump": false,
+	"action": false,
+}
+
+func reset_ui_buttons():
+	ui_buttons["jump"] = false
+	ui_buttons["action"] = false
 
 func shot():
 	
@@ -58,10 +68,10 @@ func shot():
 func floor_state(delta: float) -> void:
 	var direction := Vector3.ZERO
 	
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") or ui_buttons["left"]:
 		direction.x = -1
 		target_rot_y = -90
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("right") or ui_buttons["right"]:
 		direction.x = 1
 		target_rot_y = 90
 	else:
@@ -91,7 +101,7 @@ func floor_state(delta: float) -> void:
 	
 	
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") or ui_buttons["jump"]:
 		state = 1
 		air_progresion = 0
 		air_direction = direction
@@ -107,7 +117,7 @@ func floor_state(delta: float) -> void:
 	animationTree.set("parameters/walk_speed/blend_position",Vector2(direction.x, direction.z).length())
 	animationTree.set("parameters/arms_walk_speed/blend_position",Vector2(direction.x, direction.z).length() / 2.0)
 	
-	if Input.is_action_just_pressed("shot"):
+	if Input.is_action_just_pressed("shot") or ui_buttons["action"]:
 		shot()
 	
 
@@ -118,9 +128,9 @@ func floor_state(delta: float) -> void:
 func air_state(delta: float) -> void:
 	
 	
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") or ui_buttons["left"]:
 		air_direction.x += -5 * delta
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("right") or ui_buttons["right"]:
 		air_direction.x += 5 * delta
 	
 	if air_direction.length() > 1:
@@ -142,7 +152,7 @@ func air_state(delta: float) -> void:
 	
 	air_progresion += delta * 2
 	
-	if Input.is_action_just_pressed("shot"):
+	if Input.is_action_just_pressed("shot") or ui_buttons["action"]:
 		shot()
 	
 	if velocity.y < 0:
@@ -166,17 +176,17 @@ func ledge_state(delta: float) -> void:
 		$model.position.x = 0.25
 		
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") or ui_buttons["jump"]:
 		state = 1
 		air_progresion = 0
 		animationTree.set("parameters/body_state/transition_request","normal")
 		$model.position = Vector3.ZERO
 		
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") or ui_buttons["left"]:
 			target_rot_y = -90
 			$model.rotation_degrees.y = -90
 			air_direction.x = -1
-		elif Input.is_action_pressed("right"):
+		elif Input.is_action_pressed("right") or ui_buttons["right"]:
 			target_rot_y = 90
 			$model.rotation_degrees.y = 90
 			air_direction.x = 1
@@ -204,3 +214,38 @@ func _physics_process(delta: float) -> void:
 	freze_target_rot_y -= delta
 	cooldown -= delta
 	move_and_slide()
+	
+	reset_ui_buttons()
+'''
+var ui_buttons : Dictionary = {
+	"left": false,
+	"right": false,
+	"jump": false,
+	"action": false,
+}
+'''
+
+
+func _on_left_pressed() -> void:
+	ui_buttons["left"] = true
+
+func _on_left_released() -> void:
+	ui_buttons["left"] = false
+
+
+func _on_right_pressed() -> void:
+	ui_buttons["right"] = true
+
+func _on_right_released() -> void:
+	ui_buttons["right"] = false
+
+
+
+
+
+func _on_jump_pressed() -> void:
+	ui_buttons["jump"] = true
+
+
+func _on_action_pressed() -> void:
+	ui_buttons["action"] = true
