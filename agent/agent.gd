@@ -1,11 +1,13 @@
 extends CharacterBody3D
 
-@onready var particle_muzle : GPUParticles3D = $model/agent/Object/Skeleton3D/Cube_015/gun/muzle
+@onready var particle_muzle : GPUParticles3D = $model/particle_muzle
+
 
 func _ready() -> void:
 	$camera_basis/camera_basis_3D.global_position = global_position
 	$camera_basis/camera_basis_3D.global_rotation = global_rotation
 	particle_muzle.one_shot = true
+	particle_muzle.emitting = false
 
 var state := 0
 
@@ -25,26 +27,32 @@ var air_direction := Vector3.ZERO
 var target_rot_y := 90.0
 var freze_target_rot_y := 0.0
 
-@export var shot_effect :PackedScene
 @export var bullet :PackedScene
 
 var cooldown :float = 0.0
 
 func shot():
 	
+	var b : Node3D= bullet.instantiate()
+	get_tree().get_root().add_child(b)
 	
-	if freze_target_rot_y <= 0:
-		if target_rot_y < 0:
-			target_rot_y = -90
-			$model.rotation_degrees.y = -90
-		elif target_rot_y > 0:
-			target_rot_y = 90
-			$model.rotation_degrees.y = 90
+	
+	if target_rot_y < 0:
+		target_rot_y = -90
+		$model.rotation_degrees.y = -90
+		b.direction.x = -1
+	elif target_rot_y > 0:
+		target_rot_y = 90
+		$model.rotation_degrees.y = 90
+		b.direction.x = 1
+	
+	b.global_position = $model/particle_muzle.global_position
 	
 	if cooldown <= 0:
 		animationTree.set("parameters/shot/request",1)
 		freze_target_rot_y = 0.2
-		particle_muzle.emitting = true
+		if not particle_muzle.emitting:
+			particle_muzle.emitting = true
 		cooldown = 0.1
 
 func floor_state(delta: float) -> void:
@@ -75,6 +83,7 @@ func floor_state(delta: float) -> void:
 		air_progresion = 0.5
 		animationTree.set("parameters/legs/transition_request","jump")
 		animationTree.set("parameters/legs/transition_request","jump")
+		air_direction = Vector3.ZERO
 	
 	if new_direction != Vector3.ZERO:
 		direction = new_direction 
@@ -100,7 +109,6 @@ func floor_state(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("shot"):
 		shot()
-	
 	
 
 
@@ -156,6 +164,7 @@ func ledge_state(delta: float) -> void:
 		target_rot_y = 90
 		$model.rotation_degrees.y = 90
 		$model.position.x = 0.25
+		
 	
 	if Input.is_action_just_pressed("jump"):
 		state = 1
@@ -166,12 +175,19 @@ func ledge_state(delta: float) -> void:
 		if Input.is_action_pressed("left"):
 			target_rot_y = -90
 			$model.rotation_degrees.y = -90
+			air_direction.x = -1
 		elif Input.is_action_pressed("right"):
 			target_rot_y = 90
 			$model.rotation_degrees.y = 90
+			air_direction.x = 1
+		else:
+			air_direction.x = 0
 
 func _process(delta: float) -> void:
 	manage_camera(delta)
+
+func is_player():
+	pass
 
 func _physics_process(delta: float) -> void:
 	
