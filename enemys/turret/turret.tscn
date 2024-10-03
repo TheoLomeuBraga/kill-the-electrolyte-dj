@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=4 uid="uid://cde4631xn1r6y"]
+[gd_scene load_steps=26 format=4 uid="uid://cde4631xn1r6y"]
 
 [ext_resource type="Script" path="res://enemys/turret/turret.gd" id="1_y0mtf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjuia"]
+resource_local_to_scene = true
 resource_name = "vertex"
 cull_mode = 2
 vertex_color_use_as_albedo = true
 roughness = 0.5
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_njvov"]
 _surfaces = [{
@@ -204,6 +206,61 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wp3hn")
 
+[sub_resource type="Curve" id="Curve_w2h3d"]
+max_value = 0.5
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.5), 0.0, 0.0, 0, 0, Vector2(0.384058, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_v5pd8"]
+curve = SubResource("Curve_w2h3d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5gkgu"]
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_v5pd8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63kod"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vxiqx"]
+material = SubResource("StandardMaterial3D_63kod")
+radial_segments = 4
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mk50"]
+size = Vector3(1, 2.07312, 1)
+
+[sub_resource type="Curve" id="Curve_om4td"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ju3sm"]
+curve = SubResource("Curve_om4td")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vllu4"]
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ju3sm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usnpu"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s4hpk"]
+material = SubResource("StandardMaterial3D_usnpu")
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 1
+
 [node name="Turret" type="Node3D"]
 script = ExtResource("1_y0mtf")
 
@@ -211,6 +268,7 @@ script = ExtResource("1_y0mtf")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="turret"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_txlt8")
 skeleton = NodePath("")
 
@@ -236,3 +294,28 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wkyhx")
 skeleton = NodePath("")
+
+[node name="muzle" type="GPUParticles3D" parent="turret/Cylinder_002/Cylinder_001/Cube/Cube_001"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.90234, -0.141553)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5gkgu")
+draw_pass_1 = SubResource("SphereMesh_vxiqx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817231, 0)
+shape = SubResource("BoxShape3D_5mk50")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_vllu4")
+draw_pass_1 = SubResource("SphereMesh_s4hpk")
+
+[connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]

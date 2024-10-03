@@ -10,4 +10,6 @@ func _physics_process(delta: float) -> void:
 	if $ShapeCast3D.is_colliding():
 		for i in range(0,$ShapeCast3D.get_collision_count()):
 			if not $ShapeCast3D.get_collider(i).has_method("is_player"):
-				queue_free()
+				if $ShapeCast3D.get_collider(i).get_parent().has_method("hit"):
+					$ShapeCast3D.get_collider(i).get_parent().hit(1)
+		queue_free()

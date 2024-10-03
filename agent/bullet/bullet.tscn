@@ -9,8 +9,8 @@ emission = Color(1, 1, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_xv1oi"]
 material = SubResource("StandardMaterial3D_gxlj0")
-radius = 0.1
-height = 0.2
+radius = 0.2
+height = 0.4
 radial_segments = 4
 rings = 1
 
