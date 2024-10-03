@@ -8,6 +8,10 @@ func _ready() -> void:
 	$camera_basis/camera_basis_3D.global_rotation = global_rotation
 	particle_muzle.one_shot = true
 	particle_muzle.emitting = false
+	Global.player = self
+
+func _exit_tree() -> void:
+	Global.player = null
 
 var state := 0
 
@@ -64,7 +68,11 @@ func shot():
 		if not particle_muzle.emitting:
 			particle_muzle.emitting = true
 		cooldown = 0.1
+		$sfx/shot.pitch_scale = rng.randf_range(1,1.25)
+		$sfx/shot.play()
 
+var step_cooldown := 0.0
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 func floor_state(delta: float) -> void:
 	var direction := Vector3.ZERO
 	
@@ -79,6 +87,14 @@ func floor_state(delta: float) -> void:
 			target_rot_y = -45
 		elif target_rot_y == 90:
 			target_rot_y = 45
+	
+	if step_cooldown <= 0 and direction.x != 0:
+		$sfx/step.pitch_scale = rng.randf_range(0.75,1.25)
+		$sfx/step.play()
+		step_cooldown = 0.25
+		
+	else:
+		step_cooldown -= delta
 	
 	if freze_target_rot_y <= 0:
 		$model.rotation_degrees.y = lerp($model.rotation_degrees.y,target_rot_y,delta * 20)
@@ -149,6 +165,8 @@ func air_state(delta: float) -> void:
 		state = 0
 		animationTree.set("parameters/legs/transition_request","floor")
 		animationTree.set("parameters/arms/transition_request","floor")
+		$sfx/step.pitch_scale = 0.75
+		$sfx/step.play()
 	
 	air_progresion += delta * 2
 	
@@ -159,6 +177,8 @@ func air_state(delta: float) -> void:
 		if (target_rot_y < 0 and $grab_area/L/RayCast3D.is_colliding() and $grab_area/L/RayCast3D2.is_colliding()) or (target_rot_y > 0 and $grab_area/R/RayCast3D.is_colliding() and $grab_area/R/RayCast3D2.is_colliding()) :
 			state = 2
 			velocity = Vector3.ZERO
+			$sfx/step.pitch_scale = 1.75
+			$sfx/step.play()
 	
 	
 
@@ -192,6 +212,7 @@ func ledge_state(delta: float) -> void:
 			air_direction.x = 1
 		else:
 			air_direction.x = 0
+		
 
 func _process(delta: float) -> void:
 	manage_camera(delta)
@@ -216,14 +237,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	reset_ui_buttons()
-'''
-var ui_buttons : Dictionary = {
-	"left": false,
-	"right": false,
-	"jump": false,
-	"action": false,
-}
-'''
 
 
 func _on_left_pressed() -> void:

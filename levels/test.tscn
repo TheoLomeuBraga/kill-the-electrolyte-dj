@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ve0n47oeu1rh"]
+[gd_scene load_steps=4 format=3 uid="uid://ve0n47oeu1rh"]
 
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
+[ext_resource type="PackedScene" uid="uid://cde4631xn1r6y" path="res://enemys/turret/turret.tscn" id="2_0xd3j"]
 
 [sub_resource type="Environment" id="Environment_s5qg6"]
 ambient_light_source = 2
@@ -43,3 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 
 [node name="Agent" parent="." instance=ExtResource("1_dh8b5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="Turret" parent="." instance=ExtResource("2_0xd3j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 0, 0)
