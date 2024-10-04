@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ve0n47oeu1rh"]
+[gd_scene load_steps=5 format=3 uid="uid://ve0n47oeu1rh"]
 
+[ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_6nijy"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
 [ext_resource type="PackedScene" uid="uid://cde4631xn1r6y" path="res://enemys/turret/turret.tscn" id="2_0xd3j"]
 
@@ -18,26 +19,37 @@ use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+material = ExtResource("1_6nijy")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.861401, 0)
 size = Vector3(3, 3, 1)
+material = ExtResource("1_6nijy")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.408426, -0.912791, 0, 0.912791, 0.408426, 0, 0, 0, 1, -10, -0.818299, 0)
 size = Vector3(3, 3, 1)
+material = ExtResource("1_6nijy")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.8614, 0)
 size = Vector3(3, 3, 1)
+material = ExtResource("1_6nijy")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85758, 4.06392, 0)
 size = Vector3(3, 2, 1)
+material = ExtResource("1_6nijy")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14242, 1.56392, 0)
 size = Vector3(3, 3, 1)
+material = ExtResource("1_6nijy")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1424, 5.56392, 0)
+size = Vector3(3, 3, 1)
+material = ExtResource("1_6nijy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, -11, 4, -3)

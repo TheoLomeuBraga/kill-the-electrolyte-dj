@@ -29,6 +29,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_txlt8"]
+resource_local_to_scene = true
 resource_name = "turret_Cylinder_002"
 _surfaces = [{
 "aabb": AABB(-0.804805, -0.159361, -0.804805, 1.60961, 0.40058, 1.60961),
@@ -63,6 +64,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b6jf7"]
+resource_local_to_scene = true
 resource_name = "turret_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-0.678488, 0.225867, -0.678488, 1.35698, 0.12061, 1.35698),
@@ -96,6 +98,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uqbw4"]
+resource_local_to_scene = true
 resource_name = "turret_Cube_002"
 _surfaces = [{
 "aabb": AABB(-0.499643, 0.306167, -0.3, 0.207299, 2.36912, 0.6),
@@ -128,6 +131,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_goltw"]
+resource_local_to_scene = true
 resource_name = "turret_Cube_003"
 _surfaces = [{
 "aabb": AABB(-0.349252, -0.349252, -0.71361, 1.18711, 1.42531, 1.16286),
@@ -160,6 +164,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ktnuk"]
+resource_local_to_scene = true
 resource_name = "turret_Cube"
 _surfaces = [{
 "aabb": AABB(-0.2, 0.516977, -0.319261, 0.4, 1.49284, 0.695454),
@@ -192,6 +197,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wkyhx"]
+resource_local_to_scene = true
 resource_name = "turret_Cube_001"
 _surfaces = [{
 "aabb": AABB(-0.668568, -0.203647, -0.203647, 0.453703, 0.407294, 0.407294),
