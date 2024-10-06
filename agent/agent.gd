@@ -14,7 +14,9 @@ func hit(damage : int):
 	set_glow(Color.RED)
 	$sfx/hit.play()
 
+var original_parent : Node
 func _ready() -> void:
+	original_parent = get_parent()
 	$camera_basis/camera_basis_3D.global_position = global_position
 	$camera_basis/camera_basis_3D.global_rotation = global_rotation
 	particle_muzle.one_shot = true
@@ -116,7 +118,15 @@ func floor_state(delta: float) -> void:
 	elif $ShapeCastFloor.is_colliding():
 		new_direction = direction.slide($ShapeCastFloor.get_collision_normal(0))
 	else:
+		
+		var gp : Vector3 = global_position
+		get_parent().remove_child(self)
+		original_parent.add_child(self)
+		Global.player = self
+		global_position = gp
+		
 		state = 1
+		
 		air_progresion = 0.5
 		animationTree.set("parameters/legs/transition_request","jump")
 		animationTree.set("parameters/legs/transition_request","jump")
@@ -129,6 +139,13 @@ func floor_state(delta: float) -> void:
 	
 	
 	if Input.is_action_just_pressed("jump") or ui_buttons["jump"]:
+		
+		var gp : Vector3 = global_position
+		get_parent().remove_child(self)
+		original_parent.add_child(self)
+		Global.player = self
+		global_position = gp
+		
 		state = 1
 		air_progresion = 0
 		air_direction = direction
@@ -173,6 +190,13 @@ func air_state(delta: float) -> void:
 	
 	
 	if $RayCastFloor.is_colliding() and $ShapeCastFloor.is_colliding() and velocity.y < 0:
+		
+		var gp : Vector3 = global_position
+		get_parent().remove_child(self)
+		$ShapeCastFloor.get_collider(0).add_child(self)
+		Global.player = self
+		global_position = gp
+		
 		state = 0
 		animationTree.set("parameters/legs/transition_request","floor")
 		animationTree.set("parameters/arms/transition_request","floor")
@@ -190,6 +214,20 @@ func air_state(delta: float) -> void:
 			velocity = Vector3.ZERO
 			$sfx/step.pitch_scale = 1.75
 			$sfx/step.play()
+			
+			
+			if $grab_area/L/RayCast3D.is_colliding() and $grab_area/L/RayCast3D.get_collider().get_parent().has_method("is_plataform"):
+				var gp : Vector3 = global_position
+				get_parent().remove_child(self)
+				$grab_area/L/RayCast3D.get_collider().get_parent().add_child(self)
+				Global.player = self
+				global_position = gp
+			
+			if $grab_area/R/RayCast3D.is_colliding() and $grab_area/R/RayCast3D.get_collider().get_parent().has_method("is_plataform"):
+				var gp : Vector3 = global_position
+				get_parent().remove_child(self)
+				$grab_area/R/RayCast3D.get_collider().get_parent().add_child(self)
+				global_position = gp
 	
 	
 
@@ -208,6 +246,12 @@ func ledge_state(delta: float) -> void:
 		
 	
 	if Input.is_action_just_pressed("jump") or ui_buttons["jump"]:
+		var gp : Vector3 = global_position
+		get_parent().remove_child(self)
+		original_parent.add_child(self)
+		Global.player = self
+		global_position = gp
+		
 		state = 1
 		air_progresion = 0
 		animationTree.set("parameters/body_state/transition_request","normal")
@@ -224,6 +268,20 @@ func ledge_state(delta: float) -> void:
 		else:
 			air_direction.x = 0
 		
+	if $RayCastFloor.is_colliding() and $ShapeCastFloor.is_colliding() :
+		
+		var gp : Vector3 = global_position
+		get_parent().remove_child(self)
+		$ShapeCastFloor.get_collider(0).add_child(self)
+		Global.player = self
+		global_position = gp
+		
+		state = 0
+		animationTree.set("parameters/body_state/transition_request","normal")
+		animationTree.set("parameters/legs/transition_request","floor")
+		animationTree.set("parameters/arms/transition_request","floor")
+		$sfx/step.pitch_scale = 0.75
+		$sfx/step.play()
 
 func _process(delta: float) -> void:
 	manage_camera(delta)

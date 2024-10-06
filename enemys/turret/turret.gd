@@ -41,21 +41,22 @@ func shot():
 	$sfx/shot.play()
 
 func aim_state(delta: float) -> void:
-	if (direction_x > 0 and Global.player.global_position.x - global_position.x > 0 ) or (direction_x < 0 and Global.player.global_position.x - global_position.x < 0 ):
-		if Global.player != null:
-			var pp : Vector3 = Global.player.global_position
-			pp.z = 0
-			pp.y += 0.5
-			$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.look_at(pp,-Vector3.UP)
-			$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.rotation_degrees.x -= 90
-			
-			
-			
-			if global_position.distance_to(Global.player.global_position) < range_distance and coldown <= 0:
-				shot()
-				coldown = 0.5
-	else:
-		state = 0
+	if Global.player != null:
+		if (direction_x > 0 and Global.player.global_position.x - global_position.x > 0 ) or (direction_x < 0 and Global.player.global_position.x - global_position.x < 0 ):
+			if Global.player != null:
+				var pp : Vector3 = Global.player.global_position
+				pp.z = 0
+				pp.y += 0.5
+				$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.look_at(pp,-Vector3.UP)
+				$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.rotation_degrees.x -= 90
+				
+				
+				
+				if global_position.distance_to(Global.player.global_position) < range_distance and coldown <= 0:
+					shot()
+					coldown = 0.5
+		else:
+			state = 0
 
 var death := false
 func death_state(delta: float) -> void:

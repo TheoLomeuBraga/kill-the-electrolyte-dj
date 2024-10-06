@@ -3,20 +3,19 @@
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_6nijy"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
 [ext_resource type="PackedScene" uid="uid://cde4631xn1r6y" path="res://enemys/turret/turret.tscn" id="2_0xd3j"]
+[ext_resource type="PackedScene" uid="uid://bs4jj2a1scup7" path="res://levels_resources/plataform/plataform.tscn" id="4_1elnw"]
 
 [sub_resource type="Environment" id="Environment_s5qg6"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
 
-[sub_resource type="Curve3D" id="Curve3D_2nwbi"]
+[sub_resource type="Curve3D" id="Curve3D_61yme"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.18113, -1.28463, 0.223072, 0, 0, 0, 0, 0, 0, 0.0949841, 4.32414, -1.0628, 0, 0, 0, 0, 0, 0, 2.30531, 5.84039, 6.51392, 0, 0, 0, 0, 0, 0, 8.74258, 9.89205, 3.91673, 0, 0, 0, 0, 0, 0, 0.196342, 9.86072, 2.72723, 0, 0, 0, 0, 0, 0, -1.97649, 7.1042, 4.80838),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 6
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cr58u"]
+point_count = 3
 
 [node name="Test" type="Node3D"]
 
@@ -70,11 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 0, 0)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
-curve = SubResource("Curve3D_2nwbi")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4259, 7.65218, 0)
+curve = SubResource("Curve3D_61yme")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.28797, -0.749196, -0.596456, 5.96042e-08, 0.622836, -0.782342, 0.957632, 0.225291, 0.179361, -4.18113, -1.28463, 0.223072)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
-mesh = SubResource("CylinderMesh_cr58u")
+[node name="Plataform" parent="Path3D" instance=ExtResource("4_1elnw")]
