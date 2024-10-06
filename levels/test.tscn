@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ve0n47oeu1rh"]
+[gd_scene load_steps=7 format=3 uid="uid://ve0n47oeu1rh"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_6nijy"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
@@ -8,6 +8,15 @@
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_2nwbi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.18113, -1.28463, 0.223072, 0, 0, 0, 0, 0, 0, 0.0949841, 4.32414, -1.0628, 0, 0, 0, 0, 0, 0, 2.30531, 5.84039, 6.51392, 0, 0, 0, 0, 0, 0, 8.74258, 9.89205, 3.91673, 0, 0, 0, 0, 0, 0, 0.196342, 9.86072, 2.72723, 0, 0, 0, 0, 0, 0, -1.97649, 7.1042, 4.80838),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cr58u"]
 
 [node name="Test" type="Node3D"]
 
@@ -59,3 +68,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
 [node name="Turret" parent="." instance=ExtResource("2_0xd3j")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 0, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+curve = SubResource("Curve3D_2nwbi")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.28797, -0.749196, -0.596456, 5.96042e-08, 0.622836, -0.782342, 0.957632, 0.225291, 0.179361, -4.18113, -1.28463, 0.223072)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+mesh = SubResource("CylinderMesh_cr58u")

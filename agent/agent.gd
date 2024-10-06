@@ -237,6 +237,8 @@ func fade_glow(delta: float):
 
 func _physics_process(delta: float) -> void:
 	
+	position.z = 0
+	
 	fade_glow(delta)
 	
 	if state == 0:

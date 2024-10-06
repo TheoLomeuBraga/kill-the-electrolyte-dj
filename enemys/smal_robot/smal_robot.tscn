@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://boroh81gemome"]
+
+[ext_resource type="Script" path="res://enemys/smal_robot/smal_robot.gd" id="1_4tbn0"]
+
+[node name="smal_robot" type="CharacterBody3D"]
+script = ExtResource("1_4tbn0")
