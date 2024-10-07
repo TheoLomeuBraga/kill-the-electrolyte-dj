@@ -1,12 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs4jj2a1scup7"]
 
 [ext_resource type="Script" path="res://levels_resources/plataform/plataform.gd" id="1_yjlxh"]
+[ext_resource type="PackedScene" uid="uid://bssdocanl2tkp" path="res://levels_resources/plataform/plataform.glb" id="2_rk65f"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_srt7s"]
 data = PackedVector3Array(-1, 0.25, 1, 1, 0.25, 1, -1, -0.25, 1, 1, 0.25, 1, 1, -0.25, 1, -1, -0.25, 1, 1, 0.25, -1, -1, 0.25, -1, 1, -0.25, -1, -1, 0.25, -1, -1, -0.25, -1, 1, -0.25, -1, 1, 0.25, 1, 1, 0.25, -1, 1, -0.25, 1, 1, 0.25, -1, 1, -0.25, -1, 1, -0.25, 1, -1, 0.25, -1, -1, 0.25, 1, -1, -0.25, -1, -1, 0.25, 1, -1, -0.25, 1, -1, -0.25, -1, 1, 0.25, 1, -1, 0.25, 1, 1, 0.25, -1, -1, 0.25, 1, -1, 0.25, -1, 1, 0.25, -1, -1, -0.25, 1, 1, -0.25, 1, -1, -0.25, -1, 1, -0.25, 1, 1, -0.25, -1, -1, -0.25, -1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xfend"]
-size = Vector3(2, 0.5, 2)
 
 [node name="Plataform" type="PathFollow3D"]
 rotation_mode = 0
@@ -17,5 +15,5 @@ script = ExtResource("1_yjlxh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_srt7s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_xfend")
+[node name="plataform" parent="." instance=ExtResource("2_rk65f")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

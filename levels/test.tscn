@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ve0n47oeu1rh"]
+[gd_scene load_steps=8 format=3 uid="uid://ve0n47oeu1rh"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_6nijy"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
 [ext_resource type="PackedScene" uid="uid://cde4631xn1r6y" path="res://enemys/turret/turret.tscn" id="2_0xd3j"]
 [ext_resource type="PackedScene" uid="uid://bs4jj2a1scup7" path="res://levels_resources/plataform/plataform.tscn" id="4_1elnw"]
+[ext_resource type="PackedScene" uid="uid://boroh81gemome" path="res://enemys/smal_robot/smal_robot.tscn" id="5_c7bnq"]
 
 [sub_resource type="Environment" id="Environment_s5qg6"]
 ambient_light_source = 2
@@ -68,8 +69,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 [node name="Turret" parent="." instance=ExtResource("2_0xd3j")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 0, 0)
 
+[node name="Turret2" parent="." instance=ExtResource("2_0xd3j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, -1, 2.66454e-15, 1, 8.9407e-08, 4.37114e-08, -18, 4, 0)
+up_side_down = true
+
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4259, 7.65218, 0)
 curve = SubResource("Curve3D_61yme")
 
 [node name="Plataform" parent="Path3D" instance=ExtResource("4_1elnw")]
+
+[node name="smal_robot" parent="." instance=ExtResource("5_c7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)

@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://boroh81gemome"]
+[gd_scene load_steps=4 format=3 uid="uid://boroh81gemome"]
 
 [ext_resource type="Script" path="res://enemys/smal_robot/smal_robot.gd" id="1_4tbn0"]
+[ext_resource type="PackedScene" uid="uid://d2dctwm88bgd0" path="res://enemys/smal_robot/smal_robot.glb" id="2_1v1xd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3uxmu"]
+radius = 1.0
 
 [node name="smal_robot" type="CharacterBody3D"]
 script = ExtResource("1_4tbn0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_3uxmu")
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="smal_robot" parent="model" instance=ExtResource("2_1v1xd")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="muzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.14526)

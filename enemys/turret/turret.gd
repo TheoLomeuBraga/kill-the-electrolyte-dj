@@ -11,7 +11,7 @@ func get_glow() -> Color:
 func _ready() -> void:
 	pass
 
-@export var direction_x = 1
+@export var direction_x := 1
 
 var state := 0
 
@@ -40,6 +40,8 @@ func shot():
 	b.emitting = true
 	$sfx/shot.play()
 
+
+@export var up_side_down := false
 func aim_state(delta: float) -> void:
 	if Global.player != null:
 		if (direction_x > 0 and Global.player.global_position.x - global_position.x > 0 ) or (direction_x < 0 and Global.player.global_position.x - global_position.x < 0 ):
@@ -49,6 +51,9 @@ func aim_state(delta: float) -> void:
 				pp.y += 0.5
 				$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.look_at(pp,-Vector3.UP)
 				$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.rotation_degrees.x -= 90
+				
+				if up_side_down : 
+					$turret/Cylinder_002/Cylinder_001/Cube/Cube_001.rotation_degrees.z -= 180
 				
 				
 				
