@@ -282,7 +282,7 @@ draw_pass_1 = SubResource("TorusMesh_pussl")
 draw_pass_2 = SubResource("SphereMesh_0soox")
 
 [node name="muzle" type="Node3D" parent="model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.14526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32167e-08, 2, -1.47482)
 
 [node name="smal_robot" type="Node3D" parent="model"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	position.y += speed_y * delta
 	
 	speed_y -= delta * 9.8 * 2
-	if $RayCast3D.is_colliding():
+	if speed_y < 0 and $RayCast3D.is_colliding():
 		speed_y = 4.0
 	if enabled:
 		for i in range(0,get_collision_count()):
@@ -26,6 +26,12 @@ func _process(delta: float) -> void:
 				enabled = false
 				$explosion.emitting = true
 				$bomb.visible = false
+		
+		if get_collision_count() > 0:
+			enabled = false
+			$explosion.emitting = true
+			$bomb.visible = false
+			
 
 
 func _on_explosion_finished() -> void:

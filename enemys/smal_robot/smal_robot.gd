@@ -31,10 +31,8 @@ func shoot():
 	get_tree().get_root().add_child(b)
 	b.global_position = $model/muzle.global_position
 	
-	if $model.rotation_degrees.y == 90:
-		b.direction = -1
-	elif $model.rotation_degrees.y == -90:
-		b.direction = 1
+	b.direction = direction_x
+	
 	
 	if not $model/muzle_particle.emitting:
 		$model/muzle_particle.emitting = true

@@ -11,11 +11,19 @@ func get_glow() -> Color:
 	return $model/agent/Object/Skeleton3D/head_2_001/head_2_001.mesh.surface_get_material(0).emission
 
 var invencibility_time := 0.0
-func hit(damage : int):
+
+var max_health : = 3
+var health : = 3
+func hit(damage : int) -> void:
 	if invencibility_time <= 0:
 		set_glow(Color.RED)
 		$sfx/hit.play()
 		invencibility_time = 1.0
+		health -= damage
+
+func heal(power : int) -> void:
+	health += power
+	$sfx/health.play()
 
 var original_parent : Node
 func _ready() -> void:
