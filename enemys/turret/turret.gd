@@ -11,7 +11,7 @@ func get_glow() -> Color:
 func _ready() -> void:
 	pass
 
-@export var direction_x := 1
+@export var direction_x := -1
 
 var state := 0
 
@@ -76,7 +76,7 @@ func death_state(delta: float) -> void:
 func _on_gpu_particles_3d_finished() -> void:
 	queue_free()
 
-func fade_glow(delta: float):
+func fade_glow(delta: float) -> void:
 	set_glow(lerp(get_glow(),Color.BLACK,delta*4))
 
 
@@ -87,6 +87,8 @@ func _process(delta: float) -> void:
 	
 	if health <= 0:
 		state = 2
+	
+	
 	
 	if state == 0:
 		idle_state(delta)

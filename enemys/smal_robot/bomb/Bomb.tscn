@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1ir7ywddpnfi"]
+
+[ext_resource type="Script" path="res://enemys/smal_robot/bomb/bomb.gd" id="1_mr38n"]
+[ext_resource type="PackedScene" uid="uid://77cuslxirwy1" path="res://enemys/smal_robot/bomb/bomb.glb" id="2_gxnav"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xi7qs"]
+radius = 0.25
+
+[node name="Bomb" type="ShapeCast3D"]
+shape = SubResource("SphereShape3D_xi7qs")
+target_position = Vector3(0, 0, 0)
+script = ExtResource("1_mr38n")
+
+[node name="bomb" parent="." instance=ExtResource("2_gxnav")]
+transform = Transform3D(0.25, 0, 0, 0, 0.125, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.75, 0)
