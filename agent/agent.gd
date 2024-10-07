@@ -10,9 +10,12 @@ func set_glow(color:Color) -> void:
 func get_glow() -> Color:
 	return $model/agent/Object/Skeleton3D/head_2_001/head_2_001.mesh.surface_get_material(0).emission
 
+var invencibility_time := 0.0
 func hit(damage : int):
-	set_glow(Color.RED)
-	$sfx/hit.play()
+	if invencibility_time <= 0:
+		set_glow(Color.RED)
+		$sfx/hit.play()
+		invencibility_time = 1.0
 
 var original_parent : Node
 func _ready() -> void:
@@ -295,6 +298,8 @@ func fade_glow(delta: float):
 
 func _physics_process(delta: float) -> void:
 	
+	
+	
 	position.z = 0
 	
 	fade_glow(delta)
@@ -310,6 +315,7 @@ func _physics_process(delta: float) -> void:
 	
 	freze_target_rot_y -= delta
 	cooldown -= delta
+	invencibility_time -= delta
 	move_and_slide()
 	
 	reset_ui_buttons()

@@ -1,6 +1,6 @@
 extends ShapeCast3D
 
-
+@export var damage : int = 1
 @export var direction := -1.0
 @export var speed := 8.0
 func _ready() -> void:
@@ -18,3 +18,16 @@ func _process(delta: float) -> void:
 	speed_y -= delta * 9.8 * 2
 	if $RayCast3D.is_colliding():
 		speed_y = 4.0
+	if enabled:
+		for i in range(0,get_collision_count()):
+			var b : Node3D = get_collider(i)
+			if b == Global.player:
+				b.hit(damage)
+				enabled = false
+				$explosion.emitting = true
+				$bomb.visible = false
+
+
+func _on_explosion_finished() -> void:
+	queue_free()
+	
