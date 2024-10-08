@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq0dub3nx4sk5"]
+
+[ext_resource type="Script" path="res://agent/ui/health_point_display.gd" id="1_wk4ev"]
+[ext_resource type="Texture2D" uid="uid://bm11orv4f43e6" path="res://agent/ui/agent_health_ui.png" id="2_fyq6s"]
+[ext_resource type="Texture2D" uid="uid://bmaaparj2n6qa" path="res://agent/ui/health_ui_point.png" id="3_ysf85"]
+
+[node name="HealthPointDisplay" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk4ev")
+
+[node name="display" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_fyq6s")
+
+[node name="point" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("3_ysf85")
