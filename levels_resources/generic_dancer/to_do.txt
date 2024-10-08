@@ -1,0 +1,5 @@
+shoot animation
+
+sword animation
+
+punch animation

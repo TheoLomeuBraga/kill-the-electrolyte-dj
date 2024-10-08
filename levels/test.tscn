@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ve0n47oeu1rh"]
+[gd_scene load_steps=11 format=3 uid="uid://ve0n47oeu1rh"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_6nijy"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bs4jj2a1scup7" path="res://levels_resources/plataform/plataform.tscn" id="4_1elnw"]
 [ext_resource type="PackedScene" uid="uid://boroh81gemome" path="res://enemys/smal_robot/smal_robot.tscn" id="5_c7bnq"]
 [ext_resource type="PackedScene" uid="uid://bntiq4k02y614" path="res://levels_resources/health/Health.tscn" id="6_x5thj"]
+[ext_resource type="PackedScene" uid="uid://bx2p1ujtyjw8m" path="res://levels_resources/generic_dancer/generic_dancer.tscn" id="8_lltfh"]
 
 [sub_resource type="Environment" id="Environment_s5qg6"]
 ambient_light_source = 2
@@ -98,3 +99,95 @@ transform = Transform3D(1, 0, -1.3411e-07, 0, 1, 0, 1.3411e-07, 0, 1, -27, 0, 0)
 
 [node name="Health" parent="." instance=ExtResource("6_x5thj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, 0)
+
+[node name="dancers" type="Node3D" parent="."]
+
+[node name="GenericDancer" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -7)
+
+[node name="GenericDancer2" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -7)
+
+[node name="GenericDancer3" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -7)
+
+[node name="GenericDancer4" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -7)
+
+[node name="GenericDancer5" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -7)
+
+[node name="GenericDancer6" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -8)
+
+[node name="GenericDancer7" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -8)
+
+[node name="GenericDancer8" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -8)
+
+[node name="GenericDancer9" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -8)
+
+[node name="GenericDancer10" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -8)
+
+[node name="GenericDancer11" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -9)
+
+[node name="GenericDancer12" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -9)
+
+[node name="GenericDancer13" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -9)
+
+[node name="GenericDancer14" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -9)
+
+[node name="GenericDancer15" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -9)
+
+[node name="GenericDancer16" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -10)
+
+[node name="GenericDancer17" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -10)
+
+[node name="GenericDancer18" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -10)
+
+[node name="GenericDancer19" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -10)
+
+[node name="GenericDancer20" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -10)
+
+[node name="GenericDancer21" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -11)
+
+[node name="GenericDancer22" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -11)
+
+[node name="GenericDancer23" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -11)
+
+[node name="GenericDancer24" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -11)
+
+[node name="GenericDancer25" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -11)
+
+[node name="GenericDancer26" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -12)
+
+[node name="GenericDancer27" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -12)
+
+[node name="GenericDancer28" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -12)
+
+[node name="GenericDancer29" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -12)
+
+[node name="GenericDancer30" parent="dancers" instance=ExtResource("8_lltfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -12)
