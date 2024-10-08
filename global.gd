@@ -2,6 +2,9 @@ extends Node
 
 
 var player : Node3D
+
+var loaded_sceane : String 
+
 func _ready() -> void:
 	pass # Replace with function body.
 

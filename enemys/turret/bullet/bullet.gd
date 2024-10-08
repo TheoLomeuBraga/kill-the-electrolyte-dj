@@ -16,9 +16,6 @@ func _physics_process(delta: float) -> void:
 		if b == Global.player:
 			b.hit(damage)
 	
-	if $MeshInstance3D/ShapeCast3D.get_collision_count() > 0:	
-		queue_free()
-	
-	if bullet_life_time <= 0:
+	if $MeshInstance3D/ShapeCast3D.get_collision_count() > 0 or bullet_life_time <= 0:
 		queue_free()
 	

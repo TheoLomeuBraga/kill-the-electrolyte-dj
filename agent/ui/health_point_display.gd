@@ -4,6 +4,6 @@ extends Control
 
 
 
-@export var has_health = true
-func _process(delta: float) -> void:
-	$point.visible = has_health
+
+func set_has_health(no : bool) -> void:
+	$point.visible = no

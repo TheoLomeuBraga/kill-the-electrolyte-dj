@@ -12,20 +12,28 @@ func get_glow() -> Color:
 
 var invencibility_time := 0.0
 
-var max_health : = 3
-var health : = 3
-func hit(damage : int) -> void:
-	if invencibility_time <= 0:
-		set_glow(Color.RED)
-		$sfx/hit.play()
-		invencibility_time = 1.0
-		health -= damage
+@export var max_health : = 3
+@export var health : = 3
+@export var health_display_asset : PackedScene
+
+func update_health_display() -> void:
+	var i := 0
+	for hd in $android_ui/HBoxContainer.get_children():
+		if hd.has_method("set_has_health"):
+			hd.set_has_health(i < health)
+			i+=1
+
+
 
 func heal(power : int) -> void:
+	
 	health += power
 	$sfx/health.play()
+	update_health_display()
 
 var original_parent : Node
+
+
 func _ready() -> void:
 	original_parent = get_parent()
 	$camera_basis/camera_basis_3D.global_position = global_position
@@ -33,11 +41,31 @@ func _ready() -> void:
 	particle_muzle.one_shot = true
 	particle_muzle.emitting = false
 	Global.player = self
+	
+	
+	for i in range(0,max_health):
+		var n : Control = health_display_asset.instantiate()
+		$android_ui/HBoxContainer.add_child(n)
+	update_health_display()
 
 func _exit_tree() -> void:
 	Global.player = null
 
 var state := 0
+
+func hit(damage : int) -> void:
+	
+	if invencibility_time <= 0:
+		set_glow(Color.RED)
+		$sfx/hit.play()
+		invencibility_time = 0.25
+		health -= damage
+	
+	update_health_display()
+	
+	if health == 0:
+		state = 3
+		$fx/explosion.emitting = true
 
 func manage_camera(delta: float) -> void:
 	$camera_basis/camera_basis_3D.global_position = global_position
@@ -69,31 +97,32 @@ func reset_ui_buttons():
 	ui_buttons["jump"] = false
 	ui_buttons["action"] = false
 
+@export var block_gun = false
 func shot():
-	
-	var b : Node3D= bullet.instantiate()
-	get_tree().get_root().add_child(b)
-	
-	
-	if target_rot_y < 0:
-		target_rot_y = -90
-		$model.rotation_degrees.y = -90
-		b.direction.x = -1
-	elif target_rot_y > 0:
-		target_rot_y = 90
-		$model.rotation_degrees.y = 90
-		b.direction.x = 1
-	
-	b.global_position = $model/particle_muzle.global_position
-	
-	if cooldown <= 0:
-		animationTree.set("parameters/shot/request",1)
-		freze_target_rot_y = 0.2
-		if not particle_muzle.emitting:
-			particle_muzle.emitting = true
-		cooldown = 0.1
-		$sfx/shot.pitch_scale = rng.randf_range(1,1.25)
-		$sfx/shot.play()
+	if not block_gun:
+		var b : Node3D= bullet.instantiate()
+		get_tree().get_root().add_child(b)
+		
+		
+		if target_rot_y < 0:
+			target_rot_y = -90
+			$model.rotation_degrees.y = -90
+			b.direction.x = -1
+		elif target_rot_y > 0:
+			target_rot_y = 90
+			$model.rotation_degrees.y = 90
+			b.direction.x = 1
+		
+		b.global_position = $model/particle_muzle.global_position
+		
+		if cooldown <= 0:
+			animationTree.set("parameters/shot/request",1)
+			freze_target_rot_y = 0.2
+			if not particle_muzle.emitting:
+				particle_muzle.emitting = true
+			cooldown = 0.1
+			$sfx/shot.pitch_scale = rng.randf_range(1,1.25)
+			$sfx/shot.play()
 
 var step_cooldown := 0.0
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -294,6 +323,23 @@ func ledge_state(delta: float) -> void:
 		$sfx/step.pitch_scale = 0.75
 		$sfx/step.play()
 
+@export var game_over_screen : PackedScene 
+func death_state(delta: float) -> void:
+	
+	velocity = Vector3.ZERO
+	
+	$CollisionShape3D.disabled = true
+	$model.visible = false
+	
+	if $fx/explosion.emitting == false:
+		get_tree().change_scene_to_packed(game_over_screen)
+
+
+
+
+
+
+
 func _process(delta: float) -> void:
 	manage_camera(delta)
 
@@ -318,6 +364,8 @@ func _physics_process(delta: float) -> void:
 		air_state(delta)
 	elif state == 2:
 		ledge_state(delta)
+	elif state == 3:
+		death_state(delta)
 	
 	$model/agent/Object/Skeleton3D/Cube_015/gun.visible = freze_target_rot_y > -1
 	
