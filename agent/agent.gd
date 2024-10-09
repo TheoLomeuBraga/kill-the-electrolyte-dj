@@ -18,7 +18,7 @@ var invencibility_time := 0.0
 
 func update_health_display() -> void:
 	var i := 0
-	for hd in $android_ui/HBoxContainer.get_children():
+	for hd in $Health_display.get_children():
 		if hd.has_method("set_has_health"):
 			hd.set_has_health(i < health)
 			i+=1
@@ -30,6 +30,9 @@ func heal(power : int) -> void:
 	health += power
 	$sfx/health.play()
 	update_health_display()
+	
+	if health > max_health:
+		health = max_health
 
 var original_parent : Node
 
@@ -45,7 +48,7 @@ func _ready() -> void:
 	
 	for i in range(0,max_health):
 		var n : Control = health_display_asset.instantiate()
-		$android_ui/HBoxContainer.add_child(n)
+		$Health_display.add_child(n)
 	update_health_display()
 
 func _exit_tree() -> void:
@@ -91,11 +94,13 @@ var ui_buttons : Dictionary = {
 	"right": false,
 	"jump": false,
 	"action": false,
+	"pause": false,
 }
 
 func reset_ui_buttons():
 	ui_buttons["jump"] = false
 	ui_buttons["action"] = false
+	ui_buttons["pause"] = false
 
 @export var block_gun = false
 func shot():
@@ -374,6 +379,9 @@ func _physics_process(delta: float) -> void:
 	invencibility_time -= delta
 	move_and_slide()
 	
+	if ui_buttons["pause"] or Input.is_action_just_pressed("pause"):
+		$pause_menu.visible = not $pause_menu.visible
+	
 	reset_ui_buttons()
 
 
@@ -400,3 +408,7 @@ func _on_jump_pressed() -> void:
 
 func _on_action_pressed() -> void:
 	ui_buttons["action"] = true
+
+
+func _on_pause_pressed() -> void:
+	ui_buttons["pause"] = true

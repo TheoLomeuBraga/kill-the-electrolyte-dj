@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://b1rjrotvghaeo"]
+[gd_scene load_steps=121 format=4 uid="uid://b1rjrotvghaeo"]
 
 [ext_resource type="Script" path="res://agent/agent.gd" id="1_1mbpp"]
 [ext_resource type="PackedScene" uid="uid://cdkafwx7sidc6" path="res://agent/bullet/bullet.tscn" id="2_ehhju"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://7cr6ylxa4c6v" path="res://sfx/punch.wav" id="6_0mfk4"]
 [ext_resource type="AudioStream" uid="uid://buxq0gfbbpkrw" path="res://sfx/step.wav" id="7_drfky"]
 [ext_resource type="PackedScene" uid="uid://cq0dub3nx4sk5" path="res://agent/ui/health_point_display.tscn" id="10_w1wx8"]
+[ext_resource type="Texture2D" uid="uid://2euqx3yff60t" path="res://agent/ui/pause.png" id="12_alrr0"]
 
 [sub_resource type="Curve" id="Curve_ldn57"]
 min_value = -1.0
@@ -8139,7 +8140,7 @@ bones/0/name = "spine"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0.848849, -0.528636, 0, 0.528636, 0.848848, 0, 1.0099, -0.0552)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.994017, -0.0552)
+bones/0/position = Vector3(0, 1.0085, -0.0552)
 bones/0/rotation = Quaternion(0.27491, 0, 0, 0.96147)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "spine.001"
@@ -8308,14 +8309,14 @@ bones/24/parent = 0
 bones/24/rest = Transform3D(1, 0, 0, 0, -0.796068, -0.605208, 0, 0.605208, -0.796068, 0.098, -0.00561721, 0.0539195)
 bones/24/enabled = true
 bones/24/position = Vector3(0.098, -0.00561721, 0.0539195)
-bones/24/rotation = Quaternion(0.926979, 2.09613e-10, -2.41991e-08, 0.375112)
+bones/24/rotation = Quaternion(0.945182, -1.10929e-09, -2.41314e-08, 0.326543)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/name = "shin.L"
 bones/25/parent = 24
 bones/25/rest = Transform3D(1, 0, 0, 0, 0.981658, -0.190652, 0, 0.190652, 0.981658, 0, 0.441337, 0)
 bones/25/enabled = true
 bones/25/position = Vector3(0, 0.441337, 0)
-bones/25/rotation = Quaternion(0.214029, 2.63779e-15, -5.72978e-16, 0.976827)
+bones/25/rotation = Quaternion(0.110735, 5.68721e-16, 1.28306e-16, 0.99385)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/name = "Cube.006"
 bones/26/parent = 25
@@ -8336,14 +8337,14 @@ bones/28/parent = 0
 bones/28/rest = Transform3D(1, 0, 0, 0, -0.796068, -0.605208, 0, 0.605208, -0.796068, -0.098, -0.00561721, 0.0539195)
 bones/28/enabled = true
 bones/28/position = Vector3(-0.098, -0.00561721, 0.0539195)
-bones/28/rotation = Quaternion(0.926979, -7.55911e-09, -1.91007e-08, 0.375112)
+bones/28/rotation = Quaternion(0.945182, -8.47854e-09, -1.87284e-08, 0.326543)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/name = "shin.R"
 bones/29/parent = 28
 bones/29/rest = Transform3D(1, 0, 0, 0, 0.981658, -0.190652, 0, 0.190652, 0.981658, 0, 0.441337, 0)
 bones/29/enabled = true
 bones/29/position = Vector3(0, 0.441337, 0)
-bones/29/rotation = Quaternion(0.214029, 3.06628e-16, -2.18329e-16, 0.976827)
+bones/29/rotation = Quaternion(0.110735, 1.07823e-15, 2.89818e-17, 0.99385)
 bones/29/scale = Vector3(1, 1, 1)
 bones/30/name = "Cube.008"
 bones/30/parent = 29
@@ -8410,7 +8411,7 @@ bones/38/rotation = Quaternion(0.707107, -1.37679e-07, -1.37679e-07, 0.707107)
 bones/38/scale = Vector3(1, 1, 1)
 
 [node name="head_2_001" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 2.75386e-14, 7.53175e-13, -2.71945e-14, 1, 3.35276e-08, -7.53175e-13, -3.35276e-08, 1, 1.34816e-13, 1.99458, 0.0581404)
+transform = Transform3D(1, 2.75386e-14, 7.53175e-13, -2.71945e-14, 1, 3.35276e-08, -7.53175e-13, -3.35276e-08, 1, 1.34816e-13, 2.00906, 0.0581404)
 bone_name = "head_2.001"
 bone_idx = 5
 
@@ -8419,7 +8420,7 @@ mesh = SubResource("ArrayMesh_lpnqq")
 skeleton = NodePath("")
 
 [node name="head_2_004" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 2.75386e-14, 7.53175e-13, -2.71945e-14, 1, 3.35276e-08, -7.53175e-13, -3.35276e-08, 1, 1.34816e-13, 1.99458, 0.0581404)
+transform = Transform3D(1, 2.75386e-14, 7.53175e-13, -2.71945e-14, 1, 3.35276e-08, -7.53175e-13, -3.35276e-08, 1, 1.34816e-13, 2.00906, 0.0581404)
 bone_name = "head_2.004"
 bone_idx = 6
 
@@ -8428,7 +8429,7 @@ mesh = SubResource("ArrayMesh_gy7x7")
 skeleton = NodePath("")
 
 [node name="Cube_048" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 5.17364e-14, -1.27898e-13, -5.10703e-14, 1, -1.19209e-07, 1.42109e-13, 1.19209e-07, 1, 3.57492e-14, 2.63128, -0.0469135)
+transform = Transform3D(1, 5.17364e-14, -1.27898e-13, -5.10703e-14, 1, -1.19209e-07, 1.42109e-13, 1.19209e-07, 1, 3.57492e-14, 2.64576, -0.0469135)
 bone_name = "Cube.048"
 bone_idx = 7
 
@@ -8437,7 +8438,7 @@ mesh = SubResource("ArrayMesh_micjf")
 skeleton = NodePath("")
 
 [node name="Cube_012" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(0.173647, 0.984808, -1.49012e-07, -0.984808, 0.173647, 3.7998e-07, 3.65078e-07, 8.9407e-08, 1, 0.266384, 0.999961, -0.0427699)
+transform = Transform3D(0.173647, 0.984808, -1.49012e-07, -0.984808, 0.173647, 3.7998e-07, 3.65078e-07, 8.9407e-08, 1, 0.266384, 1.01444, -0.0427699)
 bone_name = "Cube.012"
 bone_idx = 11
 
@@ -8446,7 +8447,7 @@ mesh = SubResource("ArrayMesh_uj55a")
 skeleton = NodePath("")
 
 [node name="Cube_011" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(0.173647, 0.984808, -1.32248e-07, -0.984808, 0.173647, 5.06639e-07, 4.76837e-07, 3.72529e-08, 1, 0.266549, 0.999022, -0.0401437)
+transform = Transform3D(0.173647, 0.984808, -1.32248e-07, -0.984808, 0.173647, 5.06639e-07, 4.76837e-07, 3.72529e-08, 1, 0.266549, 1.0135, -0.0401437)
 bone_name = "Cube.011"
 bone_idx = 12
 
@@ -8455,7 +8456,7 @@ mesh = SubResource("ArrayMesh_x8kun")
 skeleton = NodePath("")
 
 [node name="Cube_010" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(0.171274, 0.985215, -0.00405746, -0.984943, 0.171322, 0.0231702, 0.0235228, 2.79183e-05, 0.999723, 0.207498, 1.33499, -0.0419842)
+transform = Transform3D(0.171274, 0.985215, -0.00405746, -0.984943, 0.171322, 0.0231702, 0.0235228, 2.79183e-05, 0.999723, 0.207498, 1.34947, -0.0419842)
 bone_name = "Cube.010"
 bone_idx = 13
 
@@ -8464,7 +8465,7 @@ mesh = SubResource("ArrayMesh_eh5xc")
 skeleton = NodePath("")
 
 [node name="Cube_015" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(-0.173647, -0.984808, 1.50409e-07, -0.984808, 0.173647, 3.65078e-07, 3.57628e-07, 9.12696e-08, 1, -0.266384, 0.999961, -0.0427699)
+transform = Transform3D(-0.173647, -0.984808, 1.50409e-07, -0.984808, 0.173647, 3.65078e-07, 3.57628e-07, 9.12696e-08, 1, -0.266384, 1.01444, -0.0427699)
 bone_name = "Cube.015"
 bone_idx = 17
 
@@ -8488,7 +8489,7 @@ mesh = SubResource("ArrayMesh_l4rjs")
 skeleton = NodePath("")
 
 [node name="Cube_014" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(-0.173647, -0.984808, 1.32248e-07, -0.984808, 0.173647, 5.06639e-07, 4.76837e-07, 4.56348e-08, 1, -0.266549, 0.999022, -0.0401437)
+transform = Transform3D(-0.173647, -0.984808, 1.32248e-07, -0.984808, 0.173647, 5.06639e-07, 4.76837e-07, 4.56348e-08, 1, -0.266549, 1.0135, -0.0401437)
 bone_name = "Cube.014"
 bone_idx = 18
 
@@ -8497,7 +8498,7 @@ mesh = SubResource("ArrayMesh_x8kun")
 skeleton = NodePath("")
 
 [node name="Cube_013" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(-0.171274, -0.985215, 0.00405746, -0.984943, 0.171322, 0.0231702, 0.0235228, 2.79183e-05, 0.999723, -0.207497, 1.33499, -0.0419843)
+transform = Transform3D(-0.171274, -0.985215, 0.00405746, -0.984943, 0.171322, 0.0231702, 0.0235228, 2.79183e-05, 0.999723, -0.207497, 1.34947, -0.0419843)
 bone_name = "Cube.013"
 bone_idx = 19
 
@@ -8506,7 +8507,7 @@ mesh = SubResource("ArrayMesh_eh5xc")
 skeleton = NodePath("")
 
 [node name="Cube" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 2.29507e-07, -2.47007e-07, -2.29507e-07, 1, 1.8999e-07, 2.47007e-07, -1.8999e-07, 1, -1.65547e-14, 1.47932, -1.21538e-07)
+transform = Transform3D(1, 2.29507e-07, -2.47007e-07, -2.29507e-07, 1, 1.8999e-07, 2.47007e-07, -1.8999e-07, 1, -1.65547e-14, 1.4938, -1.21538e-07)
 bone_name = "Cube"
 bone_idx = 20
 
@@ -8515,7 +8516,7 @@ mesh = SubResource("ArrayMesh_56u8c")
 skeleton = NodePath("")
 
 [node name="Cube_051" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 2.29507e-07, -2.47007e-07, -2.29507e-07, 1, 1.8999e-07, 2.47007e-07, -1.8999e-07, 1, -1.65547e-14, 1.47932, -1.21538e-07)
+transform = Transform3D(1, 2.29507e-07, -2.47007e-07, -2.29507e-07, 1, 1.8999e-07, 2.47007e-07, -1.8999e-07, 1, -1.65547e-14, 1.4938, -1.21538e-07)
 bone_name = "Cube.051"
 bone_idx = 21
 
@@ -8524,7 +8525,7 @@ mesh = SubResource("ArrayMesh_v34rq")
 skeleton = NodePath("")
 
 [node name="Cube_002" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.08616e-07, 0, -2.08616e-07, 1, 0, 1.08412, -1.13621e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 2.08616e-07, 0, -2.08616e-07, 1, 0, 1.0986, -1.13621e-07)
 bone_name = "Cube.002"
 bone_idx = 22
 
@@ -8533,7 +8534,7 @@ mesh = SubResource("ArrayMesh_2oa6v")
 skeleton = NodePath("")
 
 [node name="Cube_052" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.08616e-07, 0, -2.08616e-07, 1, 0, 1.47932, -1.96067e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 2.08616e-07, 0, -2.08616e-07, 1, 0, 1.4938, -1.96067e-07)
 bone_name = "Cube.052"
 bone_idx = 23
 
@@ -8542,7 +8543,7 @@ mesh = SubResource("ArrayMesh_iyk2b")
 skeleton = NodePath("")
 
 [node name="Cube_006" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 5.63044e-09, 7.69994e-10, -5.49697e-09, 0.992742, -0.120265, -1.44155e-09, 0.120265, 0.992741, 0.1, 0.297254, 0.0235628)
+transform = Transform3D(1, 6.92901e-10, 1.2751e-10, -6.90929e-10, 0.99989, -0.0148346, -1.37792e-10, 0.0148346, 0.999889, 0.1, 0.299726, 0.00318491)
 bone_name = "Cube.006"
 bone_idx = 26
 
@@ -8551,7 +8552,7 @@ mesh = SubResource("ArrayMesh_t7hsf")
 skeleton = NodePath("")
 
 [node name="Cube_007" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, -5.74916e-09, -1.30481e-09, 5.86341e-09, 0.992927, 0.118727, 6.13007e-10, -0.118727, 0.992926, 0.1, 0.687545, 0.0327556)
+transform = Transform3D(1, -7.37927e-10, -1.30644e-10, 7.39838e-10, 0.999883, 0.0152595, 1.19357e-10, -0.0152595, 0.999882, 0.1, 0.698819, 0.00421979)
 bone_name = "Cube.007"
 bone_idx = 27
 
@@ -8560,7 +8561,7 @@ mesh = SubResource("ArrayMesh_kwmdn")
 skeleton = NodePath("")
 
 [node name="Cube_008" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(-1, 4.92918e-09, -1.36173e-09, 5.05717e-09, 0.992742, -0.120265, -7.59044e-10, 0.120265, 0.992741, -0.1, 0.297254, 0.0235628)
+transform = Transform3D(-1, 6.09639e-10, -1.31742e-10, 6.11526e-10, 0.99989, -0.0148346, -1.22675e-10, 0.0148346, 0.999889, -0.1, 0.299726, 0.00318491)
 bone_name = "Cube.008"
 bone_idx = 30
 
@@ -8569,7 +8570,7 @@ mesh = SubResource("ArrayMesh_t7hsf")
 skeleton = NodePath("")
 
 [node name="Cube_009" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(-1, -4.68373e-09, 6.38419e-10, -4.5748e-09, 0.992927, 0.118727, 1.18999e-09, -0.118727, 0.992926, -0.1, 0.687545, 0.0327556)
+transform = Transform3D(-1, -6.02927e-10, 1.14792e-10, -6.01105e-10, 0.999883, 0.0152595, 1.2399e-10, -0.0152595, 0.999882, -0.1, 0.698819, 0.00421979)
 bone_name = "Cube.009"
 bone_idx = 31
 
@@ -8578,7 +8579,7 @@ mesh = SubResource("ArrayMesh_kwmdn")
 skeleton = NodePath("")
 
 [node name="Cube_003" type="BoneAttachment3D" parent="model/agent/Object/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 4.76837e-07, 0, -4.76837e-07, 1, 0, 1.08412, -1.11759e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 4.76837e-07, 0, -4.76837e-07, 1, 0, 1.0986, -1.11759e-07)
 bone_name = "Cube.003"
 bone_idx = 32
 
@@ -8668,6 +8669,11 @@ spring_length = 5.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="camera_basis/camera_basis_3D/SpringArm3D/Camera3D"]
 
+[node name="Health_display" type="HBoxContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 98.0
+alignment = 2
+
 [node name="android_ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -8700,10 +8706,51 @@ scale = Vector2(-4, 4)
 texture_normal = ExtResource("5_j643b")
 visibility_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="android_ui"]
+[node name="pause" type="TouchScreenButton" parent="android_ui"]
+scale = Vector2(3.09375, 3.0625)
+texture_normal = ExtResource("12_alrr0")
+
+[node name="pause_menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="pause_menu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="pause_menu/Control"]
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 141.0
+offset_bottom = 648.0
+color = Color(0.329412, 0.329412, 0.329412, 0.764706)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "PAUSE
+"
+horizontal_alignment = 1
+
+[node name="continue" type="Button" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="exit" type="Button" parent="pause_menu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "exit
+"
 
 [connection signal="pressed" from="android_ui/left" to="." method="_on_left_pressed"]
 [connection signal="released" from="android_ui/left" to="." method="_on_left_released"]
@@ -8711,3 +8758,4 @@ offset_bottom = 141.0
 [connection signal="released" from="android_ui/right" to="." method="_on_right_released"]
 [connection signal="pressed" from="android_ui/jump" to="." method="_on_jump_pressed"]
 [connection signal="pressed" from="android_ui/action" to="." method="_on_action_pressed"]
+[connection signal="pressed" from="android_ui/pause" to="." method="_on_pause_pressed"]
