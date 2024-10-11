@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceugpg1kwnefi"]
+
+[ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_shgso"]
+
+[node name="Level1Intro" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -4.5)
+size = Vector3(88, 1, 12)
+
+[node name="Agent" parent="." instance=ExtResource("1_shgso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57764, 0)
+block_gun = true

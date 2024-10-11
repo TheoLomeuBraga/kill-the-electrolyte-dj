@@ -59,7 +59,7 @@ func aim_state(delta: float) -> void:
 				
 				if global_position.distance_to(Global.player.global_position) < range_distance and coldown <= 0:
 					shot()
-					coldown = 0.5
+					coldown = 1.0
 		else:
 			state = 0
 

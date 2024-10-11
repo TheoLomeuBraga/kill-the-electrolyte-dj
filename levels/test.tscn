@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ve0n47oeu1rh"]
+[gd_scene load_steps=10 format=3 uid="uid://ve0n47oeu1rh"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_6nijy"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_dh8b5"]
@@ -9,11 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bntiq4k02y614" path="res://levels_resources/health/Health.tscn" id="6_x5thj"]
 [ext_resource type="PackedScene" uid="uid://bx2p1ujtyjw8m" path="res://levels_resources/generic_dancer/generic_dancer.tscn" id="8_lltfh"]
 
-[sub_resource type="Environment" id="Environment_s5qg6"]
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.5
-
 [sub_resource type="Curve3D" id="Curve3D_61yme"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -22,9 +17,6 @@ _data = {
 point_count = 3
 
 [node name="Test" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_s5qg6")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true

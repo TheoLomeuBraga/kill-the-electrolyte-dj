@@ -328,7 +328,7 @@ func ledge_state(delta: float) -> void:
 		$sfx/step.pitch_scale = 0.75
 		$sfx/step.play()
 
-@export var game_over_screen : PackedScene 
+
 func death_state(delta: float) -> void:
 	
 	velocity = Vector3.ZERO
@@ -336,8 +336,8 @@ func death_state(delta: float) -> void:
 	$CollisionShape3D.disabled = true
 	$model.visible = false
 	
-	if $fx/explosion.emitting == false:
-		get_tree().change_scene_to_packed(game_over_screen)
+	if not Global.the_game_is_over and $fx/explosion.emitting == false:
+		Global.game_over()
 
 
 
@@ -354,6 +354,8 @@ func is_player():
 
 func fade_glow(delta: float):
 	set_glow(lerp(get_glow(),Color.BLACK,delta*4))
+
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -379,8 +381,9 @@ func _physics_process(delta: float) -> void:
 	invencibility_time -= delta
 	move_and_slide()
 	
-	if ui_buttons["pause"] or Input.is_action_just_pressed("pause"):
-		$pause_menu.visible = not $pause_menu.visible
+	if ui_buttons["pause"]:
+		Global.pause_unpause()
+		
 	
 	reset_ui_buttons()
 
