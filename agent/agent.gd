@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 @onready var particle_muzle : GPUParticles3D = $model/particle_muzle
 
+func is_agent():
+	pass
+
 func set_glow(color:Color) -> void:
 	$model/agent/Object/Skeleton3D/head_2_001/head_2_001.mesh.surface_get_material(0).emission = color
 	$model/agent/Object/Skeleton3D/Cube_051/Cube_051.mesh.surface_get_material(0).emission = color

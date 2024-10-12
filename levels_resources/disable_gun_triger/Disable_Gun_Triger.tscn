@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://phmes0egy02g"]
+
+[ext_resource type="Script" path="res://levels_resources/disable_gun_triger/disable_gun_triger.gd" id="1_bl1xy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3r5q"]
+size = Vector3(66, 16, 5)
+
+[node name="DisableGunTriger" type="Area3D"]
+script = ExtResource("1_bl1xy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_v3r5q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
