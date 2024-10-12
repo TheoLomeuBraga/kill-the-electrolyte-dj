@@ -1,16 +1,418 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceugpg1kwnefi"]
+[gd_scene load_steps=5 format=3 uid="uid://ceugpg1kwnefi"]
 
+[ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_rwyjp"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_shgso"]
+[ext_resource type="PackedScene" uid="uid://2gfjp1edoyql" path="res://levels_resources/light_cannon/Light_Cannon.tscn" id="2_1lrid"]
+[ext_resource type="PackedScene" uid="uid://bx2p1ujtyjw8m" path="res://levels_resources/generic_dancer/generic_dancer.tscn" id="4_fsdnh"]
 
 [node name="Level1Intro" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -4.5)
-size = Vector3(88, 1, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -10.5, -19)
+size = Vector3(64, 22, 41)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 13, -19)
+size = Vector3(45, 1, 41)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 6.5, -19)
+size = Vector3(1, 14, 41)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6.5, -19)
+size = Vector3(1, 14, 41)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9588, 2, -0.136644)
+operation = 2
+size = Vector3(1.19476, 3, 2)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0412, 2, -0.136644)
+operation = 2
+size = Vector3(1.19476, 3, 2)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6.53711, -39)
+size = Vector3(45, 13, 1)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 1.5, -38.5)
+size = Vector3(20, 2, 2)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43.5, 1.5, -18)
+size = Vector3(39, 2, 2)
+material = ExtResource("1_rwyjp")
 
 [node name="Agent" parent="." instance=ExtResource("1_shgso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57764, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1.57764, 0)
 block_gun = true
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="LightCannon" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 12, -8)
+
+[node name="LightCannon2" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 12, -24)
+
+[node name="LightCannon3" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, -8)
+
+[node name="LightCannon4" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, -24)
+
+[node name="LightCannon5" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 12, -16)
+
+[node name="LightCannon6" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, -16)
+
+[node name="LightCannon7" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 12, -37)
+
+[node name="LightCannon9" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 12, -8)
+
+[node name="LightCannon10" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 12, -24)
+
+[node name="LightCannon11" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 12, -8)
+
+[node name="LightCannon12" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 12, -24)
+
+[node name="LightCannon13" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 12, -16)
+
+[node name="LightCannon14" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 12, -16)
+
+[node name="LightCannon16" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 12, -8)
+
+[node name="LightCannon17" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 12, -24)
+
+[node name="LightCannon18" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 12, -16)
+
+[node name="LightCannon15" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 12, -37)
+
+[node name="LightCannon8" parent="lights" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, -37)
+
+[node name="generic_dancers" type="Node3D" parent="."]
+
+[node name="GenericDancer" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.572911, -10)
+
+[node name="GenericDancer2" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.572911, -12)
+
+[node name="GenericDancer3" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.572911, -10)
+
+[node name="GenericDancer4" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.572911, -14)
+
+[node name="GenericDancer5" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.572911, -16)
+
+[node name="GenericDancer6" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.572911, -13)
+
+[node name="GenericDancer7" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.572911, -16)
+
+[node name="GenericDancer8" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0.572911, -12)
+
+[node name="GenericDancer9" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.572911, -12)
+
+[node name="GenericDancer10" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.572911, -17)
+
+[node name="GenericDancer11" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.572911, -17)
+
+[node name="GenericDancer12" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -20.4952, 0.572911, -31.4812)
+
+[node name="GenericDancer13" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16.9597, 0.572911, -30.7741)
+
+[node name="GenericDancer14" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16.9597, 0.572911, -27.9456)
+
+[node name="GenericDancer15" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17.6668, 0.572911, -34.3096)
+
+[node name="GenericDancer16" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.0099, 0.572911, -31.4812)
+
+[node name="GenericDancer17" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14.8383, 0.572911, -30.067)
+
+[node name="GenericDancer18" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14.8383, 0.572911, -34.3096)
+
+[node name="GenericDancer19" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -18.3739, 0.572911, -32.1883)
+
+[node name="GenericDancer20" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -13.4241, 0.572911, -27.2385)
+
+[node name="GenericDancer21" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.717, 0.572911, -33.6025)
+
+[node name="GenericDancer22" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.717, 0.572911, -33.6025)
+
+[node name="GenericDancer23" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -20.4952, 0.572911, -23.4812)
+
+[node name="GenericDancer24" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16.9597, 0.572911, -22.7741)
+
+[node name="GenericDancer25" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16.9597, 0.572911, -19.9456)
+
+[node name="GenericDancer26" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17.6668, 0.572911, -26.3096)
+
+[node name="GenericDancer27" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.0099, 0.572911, -23.4812)
+
+[node name="GenericDancer28" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14.8383, 0.572911, -22.067)
+
+[node name="GenericDancer29" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14.8383, 0.572911, -26.3096)
+
+[node name="GenericDancer30" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -18.3739, 0.572911, -24.1883)
+
+[node name="GenericDancer31" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -13.4241, 0.572911, -19.2385)
+
+[node name="GenericDancer32" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.717, 0.572911, -25.6025)
+
+[node name="GenericDancer33" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -12.717, 0.572911, -25.6025)
+
+[node name="GenericDancer34" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.76445, 0.572911, -23.7477)
+
+[node name="GenericDancer35" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -7.16637, 0.572911, -26.9798)
+
+[node name="GenericDancer36" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4.43433, 0.572911, -26.2477)
+
+[node name="GenericDancer37" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -10.7645, 0.572911, -27.2118)
+
+[node name="GenericDancer38" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6.5683, 0.572911, -31.9439)
+
+[node name="GenericDancer39" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -5.93433, 0.572911, -28.8458)
+
+[node name="GenericDancer40" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -10.0324, 0.572911, -29.9439)
+
+[node name="GenericDancer41" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.89843, 0.572911, -25.9798)
+
+[node name="GenericDancer42" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.83625, 0.572911, -29.4798)
+
+[node name="GenericDancer43" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.80035, 0.572911, -31.8099)
+
+[node name="GenericDancer44" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.80035, 0.572911, -31.8099)
+
+[node name="GenericDancer45" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.23555, 0.572911, -23.7477)
+
+[node name="GenericDancer46" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.83363, 0.572911, -26.9798)
+
+[node name="GenericDancer47" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 5.56567, 0.572911, -26.2477)
+
+[node name="GenericDancer48" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.764453, 0.572911, -27.2118)
+
+[node name="GenericDancer49" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3.4317, 0.572911, -31.9439)
+
+[node name="GenericDancer50" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.06567, 0.572911, -28.8458)
+
+[node name="GenericDancer51" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.032402, 0.572911, -29.9439)
+
+[node name="GenericDancer52" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.10157, 0.572911, -25.9798)
+
+[node name="GenericDancer53" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 7.16375, 0.572911, -29.4798)
+
+[node name="GenericDancer54" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.19965, 0.572911, -31.8099)
+
+[node name="GenericDancer55" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.19965, 0.572911, -31.8099)
+
+[node name="GenericDancer56" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.76445, 0.572911, -13.7477)
+
+[node name="GenericDancer57" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -7.16637, 0.572911, -16.9798)
+
+[node name="GenericDancer58" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4.43433, 0.572911, -16.2477)
+
+[node name="GenericDancer59" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -10.7645, 0.572911, -17.2118)
+
+[node name="GenericDancer60" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6.5683, 0.572911, -21.9439)
+
+[node name="GenericDancer61" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -5.93433, 0.572911, -18.8458)
+
+[node name="GenericDancer62" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -10.0324, 0.572911, -19.9439)
+
+[node name="GenericDancer63" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.89843, 0.572911, -15.9798)
+
+[node name="GenericDancer64" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.83625, 0.572911, -19.4798)
+
+[node name="GenericDancer65" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.80035, 0.572911, -21.8099)
+
+[node name="GenericDancer66" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -8.80035, 0.572911, -21.8099)
+
+[node name="GenericDancer67" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 10.2355, 0.572911, -21.7477)
+
+[node name="GenericDancer68" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 11.8336, 0.572911, -24.9798)
+
+[node name="GenericDancer69" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 14.5657, 0.572911, -24.2477)
+
+[node name="GenericDancer70" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.23555, 0.572911, -25.2118)
+
+[node name="GenericDancer71" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.4317, 0.572911, -29.9439)
+
+[node name="GenericDancer72" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 13.0657, 0.572911, -26.8458)
+
+[node name="GenericDancer73" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.9676, 0.572911, -27.9439)
+
+[node name="GenericDancer74" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 10.1016, 0.572911, -23.9798)
+
+[node name="GenericDancer75" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 16.1638, 0.572911, -27.4798)
+
+[node name="GenericDancer76" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 10.1996, 0.572911, -29.8099)
+
+[node name="GenericDancer77" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 10.1996, 0.572911, -29.8099)
+
+[node name="GenericDancer78" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.23555, 0.572911, -12.7477)
+
+[node name="GenericDancer79" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 9.83363, 0.572911, -15.9798)
+
+[node name="GenericDancer80" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 12.5657, 0.572911, -15.2477)
+
+[node name="GenericDancer81" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6.23555, 0.572911, -16.2118)
+
+[node name="GenericDancer82" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 10.4317, 0.572911, -20.9439)
+
+[node name="GenericDancer83" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 11.0657, 0.572911, -17.8458)
+
+[node name="GenericDancer84" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6.9676, 0.572911, -18.9439)
+
+[node name="GenericDancer85" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.10157, 0.572911, -14.9798)
+
+[node name="GenericDancer86" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 14.1638, 0.572911, -18.4798)
+
+[node name="GenericDancer87" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.19965, 0.572911, -20.8099)
+
+[node name="GenericDancer88" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 8.19965, 0.572911, -20.8099)
+
+[node name="GenericDancer89" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.76445, 0.572911, -10.7477)
+
+[node name="GenericDancer90" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.166374, 0.572911, -13.9798)
+
+[node name="GenericDancer91" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.56567, 0.572911, -13.2477)
+
+[node name="GenericDancer92" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -3.76445, 0.572911, -14.2118)
+
+[node name="GenericDancer93" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.431701, 0.572911, -18.9439)
+
+[node name="GenericDancer94" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.06567, 0.572911, -15.8458)
+
+[node name="GenericDancer95" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -3.0324, 0.572911, -16.9439)
+
+[node name="GenericDancer96" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.89843, 0.572911, -12.9798)
+
+[node name="GenericDancer97" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.16375, 0.572911, -16.4798)
+
+[node name="GenericDancer98" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.80035, 0.572911, -18.8099)
+
+[node name="GenericDancer99" parent="generic_dancers" instance=ExtResource("4_fsdnh")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.80035, 0.572911, -18.8099)

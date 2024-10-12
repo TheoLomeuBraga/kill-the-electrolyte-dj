@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://global.gd" id="1_n5yew"]
 
 [sub_resource type="Environment" id="Environment_wvtoe"]
+background_mode = 1
+background_color = Color(0.0280334, 4.09111e-07, 0.24052, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
