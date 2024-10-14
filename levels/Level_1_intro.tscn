@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ceugpg1kwnefi"]
+[gd_scene load_steps=22 format=3 uid="uid://ceugpg1kwnefi"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_rwyjp"]
 [ext_resource type="AudioStream" uid="uid://1mjuswfhucc5" path="res://OST/eletrolito_2.wav" id="1_sa1oe"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bntiq4k02y614" path="res://levels_resources/health/Health.tscn" id="11_pxrrj"]
 [ext_resource type="PackedScene" uid="uid://0xgtu81q2wqn" path="res://enemys/spikes/spikes.tscn" id="12_c6a5m"]
 [ext_resource type="PackedScene" uid="uid://bs4jj2a1scup7" path="res://levels_resources/plataform/plataform.tscn" id="13_taymn"]
+[ext_resource type="PackedScene" uid="uid://cde4631xn1r6y" path="res://enemys/turret/turret.tscn" id="14_qdspi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wdd7d"]
 load_path = "res://.godot/imported/concrete_wall.png-156598d611085183f16fcec2c4e174a9.ctex"
@@ -753,6 +754,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 4.41963, 0)
 [node name="Health" parent="level" instance=ExtResource("11_pxrrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 5, -1)
 
+[node name="Health2" parent="level" instance=ExtResource("11_pxrrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 1, -1)
+
 [node name="spikes" type="Node3D" parent="level"]
 
 [node name="Spikes" parent="level/spikes" instance=ExtResource("12_c6a5m")]
@@ -810,8 +814,8 @@ curve = SubResource("Curve3D_yf852")
 [node name="Plataform" parent="level/plataforma_1" instance=ExtResource("13_taymn")]
 speed = 6.0
 
-[node name="smal_robot" parent="level/plataforma_1/Plataform" instance=ExtResource("10_nsngx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.240646, 0)
+[node name="Turret" parent="level/plataforma_1/Plataform" instance=ExtResource("14_qdspi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0441437, 0.52618, 0.303487)
 
 [connection signal="finished" from="background_music" to="background_music" method="_on_finished"]
 [connection signal="body_entered" from="DisableGunTriger" to="DisableGunTriger" method="_on_body_entered"]
