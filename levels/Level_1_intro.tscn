@@ -1,12 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://ceugpg1kwnefi"]
+[gd_scene load_steps=18 format=3 uid="uid://ceugpg1kwnefi"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_rwyjp"]
+[ext_resource type="AudioStream" uid="uid://1mjuswfhucc5" path="res://OST/eletrolito_2.wav" id="1_sa1oe"]
 [ext_resource type="PackedScene" uid="uid://b1rjrotvghaeo" path="res://agent/agent.tscn" id="1_shgso"]
 [ext_resource type="PackedScene" uid="uid://2gfjp1edoyql" path="res://levels_resources/light_cannon/Light_Cannon.tscn" id="2_1lrid"]
+[ext_resource type="Script" path="res://levels/keep_music_playing.gd" id="2_r7ikk"]
 [ext_resource type="PackedScene" uid="uid://bx2p1ujtyjw8m" path="res://levels_resources/generic_dancer/generic_dancer.tscn" id="4_fsdnh"]
 [ext_resource type="PackedScene" uid="uid://b6dqng2gt0ej" path="res://levels_resources/building/building.tscn" id="5_daxjf"]
 [ext_resource type="Shader" path="res://materials_textures/triplanar_shader.tres.gdshader" id="6_5ylsq"]
 [ext_resource type="Script" path="res://levels_resources/disable_gun_triger/disable_gun_triger.gd" id="7_6eyhl"]
+[ext_resource type="PackedScene" uid="uid://boroh81gemome" path="res://enemys/smal_robot/smal_robot.tscn" id="10_nsngx"]
+[ext_resource type="PackedScene" uid="uid://bntiq4k02y614" path="res://levels_resources/health/Health.tscn" id="11_pxrrj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wdd7d"]
 load_path = "res://.godot/imported/concrete_wall.png-156598d611085183f16fcec2c4e174a9.ctex"
@@ -45,6 +49,10 @@ size = Vector3(66, 16, 5)
 
 [node name="Level1Intro" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_sa1oe")
+script = ExtResource("2_r7ikk")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -87,18 +95,23 @@ size = Vector3(45, 13, 1)
 material = ExtResource("1_rwyjp")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 1.5, -38.5)
-size = Vector3(20, 2, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 3.5, -38.5)
+size = Vector3(20, 6, 2)
 material = ExtResource("1_rwyjp")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43.5, 1.5, -18)
-size = Vector3(39, 2, 2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43.5, 3.5, -18)
+size = Vector3(39, 6, 2)
 material = ExtResource("1_rwyjp")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106, 6.5, -4)
 size = Vector3(175, 14, 1)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193, 6.5, -1.5)
+size = Vector3(1, 14, 6)
 material = ExtResource("1_rwyjp")
 
 [node name="Agent" parent="." instance=ExtResource("1_shgso")]
@@ -629,5 +642,103 @@ script = ExtResource("7_6eyhl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
 shape = SubResource("BoxShape3D_v3r5q")
 
+[node name="level" type="Node3D" parent="."]
+
+[node name="light" type="Node3D" parent="level"]
+
+[node name="LightCannon" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 12, 0)
+normal_light = true
+
+[node name="LightCannon2" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 12, 0)
+normal_light = true
+
+[node name="LightCannon3" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 12, 0)
+normal_light = true
+
+[node name="LightCannon4" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 12, 0)
+normal_light = true
+
+[node name="LightCannon5" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 12, 0)
+normal_light = true
+
+[node name="LightCannon6" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 12, 0)
+normal_light = true
+
+[node name="LightCannon7" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 12, 0)
+normal_light = true
+
+[node name="LightCannon8" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 12, 0)
+normal_light = true
+
+[node name="LightCannon9" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 12, 0)
+normal_light = true
+
+[node name="LightCannon10" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 12, 0)
+normal_light = true
+
+[node name="LightCannon11" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 12, 0)
+normal_light = true
+
+[node name="LightCannon12" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 12, 0)
+normal_light = true
+
+[node name="LightCannon13" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145, 12, 0)
+normal_light = true
+
+[node name="LightCannon14" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155, 12, 0)
+normal_light = true
+
+[node name="LightCannon15" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 12, 0)
+normal_light = true
+
+[node name="LightCannon16" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175, 12, 0)
+normal_light = true
+
+[node name="LightCannon17" parent="level/light" instance=ExtResource("2_1lrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185, 12, 0)
+normal_light = true
+
+[node name="geometry" type="CSGCombiner3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level/geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, -1)
+size = Vector3(3, 4, 5)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="level/geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1.5, -1)
+size = Vector3(3, 4, 5)
+material = ExtResource("1_rwyjp")
+
+[node name="smal_robot" parent="level" instance=ExtResource("10_nsngx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0.419635, 0)
+
+[node name="smal_robot2" parent="level" instance=ExtResource("10_nsngx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 4.41963, 0)
+
+[node name="enemys" type="Node3D" parent="level"]
+
+[node name="Health" parent="." instance=ExtResource("11_pxrrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1, -1)
+
+[connection signal="finished" from="background_music" to="background_music" method="_on_finished"]
 [connection signal="body_entered" from="DisableGunTriger" to="DisableGunTriger" method="_on_body_entered"]
 [connection signal="body_exited" from="DisableGunTriger" to="DisableGunTriger" method="_on_body_exited"]

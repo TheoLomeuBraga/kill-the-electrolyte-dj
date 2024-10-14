@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://boroh81gemome" path="res://enemys/smal_robot/smal_robot.tscn" id="5_c7bnq"]
 [ext_resource type="PackedScene" uid="uid://bntiq4k02y614" path="res://levels_resources/health/Health.tscn" id="6_x5thj"]
 [ext_resource type="PackedScene" uid="uid://bx2p1ujtyjw8m" path="res://levels_resources/generic_dancer/generic_dancer.tscn" id="8_lltfh"]
-[ext_resource type="PackedScene" uid="uid://0xgtu81q2wqn" path="res://levels_resources/spikes/spikes.tscn" id="9_ki12s"]
+[ext_resource type="PackedScene" uid="uid://0xgtu81q2wqn" path="res://enemys/spikes/spikes.tscn" id="9_ki12s"]
 
 [sub_resource type="Curve3D" id="Curve3D_61yme"]
 _data = {
