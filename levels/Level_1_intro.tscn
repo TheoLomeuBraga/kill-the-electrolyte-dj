@@ -126,6 +126,11 @@ material = ExtResource("1_rwyjp")
 
 [node name="Agent" parent="." instance=ExtResource("1_shgso")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.57764, 0)
+max_health = null
+health = null
+floor_speed = null
+block_gun = null
+jump_speed = null
 
 [node name="lights" type="Node3D" parent="."]
 
@@ -654,76 +659,6 @@ shape = SubResource("BoxShape3D_v3r5q")
 
 [node name="level" type="Node3D" parent="."]
 
-[node name="light" type="Node3D" parent="level"]
-
-[node name="LightCannon" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 12, 0)
-normal_light = true
-
-[node name="LightCannon2" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 12, 0)
-normal_light = true
-
-[node name="LightCannon3" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 12, 0)
-normal_light = true
-
-[node name="LightCannon4" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 12, 0)
-normal_light = true
-
-[node name="LightCannon5" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 12, 0)
-normal_light = true
-
-[node name="LightCannon6" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 12, 0)
-normal_light = true
-
-[node name="LightCannon7" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 12, 0)
-normal_light = true
-
-[node name="LightCannon8" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 12, 0)
-normal_light = true
-
-[node name="LightCannon9" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 12, 0)
-normal_light = true
-
-[node name="LightCannon10" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 12, 0)
-normal_light = true
-
-[node name="LightCannon11" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 12, 0)
-normal_light = true
-
-[node name="LightCannon12" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 12, 0)
-normal_light = true
-
-[node name="LightCannon13" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145, 12, 0)
-normal_light = true
-
-[node name="LightCannon14" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155, 12, 0)
-normal_light = true
-
-[node name="LightCannon15" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 12, 0)
-normal_light = true
-
-[node name="LightCannon16" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 175, 12, 0)
-normal_light = true
-
-[node name="LightCannon17" parent="level/light" instance=ExtResource("2_1lrid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185, 12, 0)
-normal_light = true
-
 [node name="geometry" type="CSGCombiner3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, 0)
 use_collision = true
@@ -802,7 +737,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 2.49984, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 2.49984, 0)
 
 [node name="Spikes15" parent="level/spikes" instance=ExtResource("12_c6a5m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 2.49984, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.9726, 2.49984, 0)
 
 [node name="Spikes16" parent="level/spikes" instance=ExtResource("12_c6a5m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 2.49984, 0)

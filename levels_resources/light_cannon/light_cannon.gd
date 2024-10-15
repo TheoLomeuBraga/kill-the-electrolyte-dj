@@ -12,6 +12,9 @@ func _ready() -> void:
 		$SpotLight3D.light_color = Color.WHITE
 
 func _process(delta: float) -> void:
+	
+	
+	
 	if not normal_light:
 		$SpotLight3D.light_color.h += delta / 5
 		if $SpotLight3D.light_color.h > 1:

@@ -73,6 +73,11 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 
 [node name="Agent" parent="." instance=ExtResource("1_dh8b5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 1, 0)
+max_health = null
+health = null
+floor_speed = null
+block_gun = null
+jump_speed = null
 
 [node name="Turret" parent="." instance=ExtResource("2_0xd3j")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -15, 0, 0)
