@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ceugpg1kwnefi"]
+[gd_scene load_steps=25 format=3 uid="uid://ceugpg1kwnefi"]
 
 [ext_resource type="Material" uid="uid://b3yv5prik2ujw" path="res://materials_textures/concrete_wall.tres" id="1_rwyjp"]
 [ext_resource type="AudioStream" uid="uid://1mjuswfhucc5" path="res://OST/eletrolito_2.wav" id="1_sa1oe"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://0xgtu81q2wqn" path="res://enemys/spikes/spikes.tscn" id="12_c6a5m"]
 [ext_resource type="PackedScene" uid="uid://bs4jj2a1scup7" path="res://levels_resources/plataform/plataform.tscn" id="13_taymn"]
 [ext_resource type="PackedScene" uid="uid://cde4631xn1r6y" path="res://enemys/turret/turret.tscn" id="14_qdspi"]
+[ext_resource type="PackedScene" uid="uid://b34cm2i7xcapg" path="res://enemys/dj/DJ_Electrolight.tscn" id="15_quy6d"]
+[ext_resource type="PackedScene" uid="uid://b06ochihq42t5" path="res://levels_resources/Table_Energetics/table.tscn" id="16_84glh"]
+[ext_resource type="PackedScene" uid="uid://cvhq7tv5et0yj" path="res://levels_resources/Table_Energetics/botle.tscn" id="17_155th"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wdd7d"]
 load_path = "res://.godot/imported/concrete_wall.png-156598d611085183f16fcec2c4e174a9.ctex"
@@ -125,7 +128,7 @@ size = Vector3(1, 14, 6)
 material = ExtResource("1_rwyjp")
 
 [node name="Agent" parent="." instance=ExtResource("1_shgso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.57764, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 1.57764, 0)
 max_health = null
 health = null
 floor_speed = null
@@ -678,6 +681,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, 0.5, -1)
 size = Vector3(16, 2, 5)
 material = ExtResource("1_rwyjp")
 
+[node name="CSGBox3D12" type="CSGBox3D" parent="level/geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 6, -1.5)
+size = Vector3(1, 13, 6)
+material = ExtResource("1_rwyjp")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="level/geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.983, 1, -0.136644)
+operation = 2
+size = Vector3(1.93687, 3, 2)
+material = ExtResource("1_rwyjp")
+
 [node name="smal_robot" parent="level" instance=ExtResource("10_nsngx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0.419635, 0)
 
@@ -751,6 +765,171 @@ speed = 6.0
 
 [node name="Turret" parent="level/plataforma_1/Plataform" instance=ExtResource("14_qdspi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0441437, 0.52618, 0.303487)
+
+[node name="DjElectrolight" parent="level" instance=ExtResource("15_quy6d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 190.201, 1, 0)
+
+[node name="Table" parent="level" instance=ExtResource("16_84glh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191, 1, 0)
+
+[node name="Botle" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.567823)
+fill = true
+
+[node name="Botle2" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.566861)
+fill = true
+
+[node name="Botle3" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.534358)
+fill = true
+
+[node name="Botle4" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.167411)
+fill = true
+
+[node name="Botle5" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.166449)
+
+[node name="Botle6" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.133946)
+fill = true
+
+[node name="Botle7" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, 0.1712)
+
+[node name="Botle8" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, 0.172162)
+fill = true
+
+[node name="Botle9" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, 0.204665)
+fill = true
+
+[node name="Botle10" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, 1.20868, 0.554443)
+
+[node name="Botle11" parent="level/Table" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, -0.146245, 1.32801)
+
+[node name="Table2" parent="level" instance=ExtResource("16_84glh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 189.404, 1, -2.23541)
+
+[node name="Botle" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.567823)
+
+[node name="Botle2" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.566861)
+fill = true
+
+[node name="Botle3" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.534358)
+
+[node name="Botle4" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.167411)
+fill = true
+
+[node name="Botle5" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.166449)
+
+[node name="Botle6" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.133946)
+fill = true
+
+[node name="Botle7" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, 0.1712)
+
+[node name="Botle8" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, 0.172162)
+fill = true
+
+[node name="Botle9" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, 0.204665)
+fill = true
+
+[node name="Botle10" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, 1.20868, 0.554443)
+
+[node name="Botle11" parent="level/Table2" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, -0.146245, 1.32801)
+
+[node name="Table3" parent="level" instance=ExtResource("16_84glh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 187.08, 1, -2.23541)
+
+[node name="Botle" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.567823)
+
+[node name="Botle2" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.566861)
+
+[node name="Botle3" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.534358)
+
+[node name="Botle4" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.167411)
+
+[node name="Botle5" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.166449)
+
+[node name="Botle6" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.133946)
+
+[node name="Botle7" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, 0.1712)
+
+[node name="Botle8" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, 0.172162)
+
+[node name="Botle9" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, 0.204665)
+
+[node name="Botle10" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, 1.20868, 0.554443)
+
+[node name="Botle11" parent="level/Table3" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, -0.146245, 1.32801)
+fill = true
+
+[node name="Table4" parent="level" instance=ExtResource("16_84glh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 184.866, 1, -2.23541)
+
+[node name="Botle" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.567823)
+fill = true
+
+[node name="Botle2" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.566861)
+
+[node name="Botle3" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.534358)
+fill = true
+
+[node name="Botle4" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, -0.167411)
+fill = true
+
+[node name="Botle5" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, -0.166449)
+
+[node name="Botle6" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, -0.133946)
+
+[node name="Botle7" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281174, 1.17272, 0.1712)
+
+[node name="Botle8" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180664, 1.17272, 0.172162)
+fill = true
+
+[node name="Botle9" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278046, 1.17272, 0.204665)
+fill = true
+
+[node name="Botle10" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, 1.20868, 0.554443)
+
+[node name="Botle11" parent="level/Table4" instance=ExtResource("17_155th")]
+transform = Transform3D(-0.0554729, -0.99846, 0, 0.99846, -0.0554729, 0, 0, 0, 1, 0.186737, -0.146245, 1.32801)
 
 [connection signal="finished" from="background_music" to="background_music" method="_on_finished"]
 [connection signal="body_entered" from="DisableGunTriger" to="DisableGunTriger" method="_on_body_entered"]

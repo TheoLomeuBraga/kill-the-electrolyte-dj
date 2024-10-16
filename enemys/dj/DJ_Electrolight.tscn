@@ -1,6 +1,7 @@
-[gd_scene load_steps=74 format=4 uid="uid://b34cm2i7xcapg"]
+[gd_scene load_steps=75 format=4 uid="uid://b34cm2i7xcapg"]
 
 [ext_resource type="Texture2D" uid="uid://qqs6ujkuid4e" path="res://enemys/dj/js_electrolight_dj.png" id="1_ka085"]
+[ext_resource type="Script" path="res://enemys/dj/dj_electrolight.gd" id="1_krpup"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agimy"]
 size = Vector3(1, 1.57422, 1)
@@ -8103,6 +8104,7 @@ _data = {
 }
 
 [node name="DjElectrolight" type="StaticBody3D"]
+script = ExtResource("1_krpup")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712891, 0)

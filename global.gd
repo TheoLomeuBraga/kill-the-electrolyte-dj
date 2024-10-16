@@ -21,9 +21,14 @@ func game_over():
 	$game_over_screen/GameOver/VBoxContainer/retry.grab_focus()
 	the_game_is_over = true
 
+func contract_complete():
+	$win_screen.visible = true
+	$win_screen/contract_complete/VBoxContainer/retry.grab_focus()
+
 func _process(delta: float) -> void:
 	if not the_game_is_over and Input.is_action_just_pressed("pause"):
 		pause_unpause()
+	
 
 
 func _on_continue_pressed() -> void:
