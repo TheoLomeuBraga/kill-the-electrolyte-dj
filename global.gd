@@ -41,5 +41,6 @@ func _on_exit_pressed() -> void:
 
 func _on_retry_pressed() -> void:
 	$game_over_screen.visible = false
+	$win_screen.visible = false
 	get_tree().reload_current_scene()
 	the_game_is_over = false
